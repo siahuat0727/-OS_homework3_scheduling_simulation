@@ -22,8 +22,8 @@ struct node_t {
 	int quantum_time;
 	clock_t total_waiting;
 	clock_t start_waiting;
-    struct node_t* next;
-    struct node_t* next_ready;
+	struct node_t* next;
+	struct node_t* next_ready;
 };
 
 struct node_t *list_front, *list_rear, *ready_front, *ready_rear;

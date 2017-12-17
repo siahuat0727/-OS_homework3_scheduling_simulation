@@ -8,12 +8,14 @@ int main()
 	return 0;
 }
 
-void ctrl_z_handler(int n){
+void ctrl_z_handler(int n)
+{
 	shell_mode();
 }
 
-void shell_mode(){
-	while(1){
+void shell_mode()
+{
+	while(1) {
 		printf("$ ");
 		while(1);
 	}
@@ -31,17 +33,17 @@ void hw_wakeup_pid(int pid)
 
 int hw_wakeup_taskname(char *task_name)
 {
-    return 0;
+	return 0;
 }
 
 int hw_task_create(char *task_name)
 {
-    return 0; // the pid of created task name
+	return 0; // the pid of created task name
 }
 
 void debug(struct node_t* start, struct node_t* end)
 {
-	
+
 }
 
 void enqueue(int task, int quantum_time)
@@ -63,10 +65,10 @@ void enqueue(int task, int quantum_time)
 	// insert into main queue
 	if (list_front == NULL && list_rear == NULL)
 		list_front = list_rear = node;
-	else if(list_front && list_rear){
+	else if(list_front && list_rear) {
 		list_rear->next = node;
 		list_rear = node;
-	}else{
+	} else {
 		throw_unexpected("main queue error");
 	}
 
@@ -74,7 +76,8 @@ void enqueue(int task, int quantum_time)
 	enqueue_ready(node);
 }
 
-void enqueue_ready(struct node_t *node){
+void enqueue_ready(struct node_t *node)
+{
 	// save timestamp
 	if(node)
 		node->start_waiting = 0; //TODO = now
@@ -84,17 +87,18 @@ void enqueue_ready(struct node_t *node){
 	// insert into ready queue
 	if (ready_front == NULL && ready_rear == NULL)
 		ready_front = ready_rear = node;
-	else if(ready_front && ready_rear){
+	else if(ready_front && ready_rear) {
 		ready_rear->next_ready = node;
 		ready_rear = node;
-	}else{
+	} else {
 		throw_unexpected("ready queue error");
 	}
 }
 
-struct node_t* dequeue_ready(){
+struct node_t* dequeue_ready()
+{
 	struct node_t* tmp = ready_front;
-	if(ready_front){
+	if(ready_front) {
 		// add waiting time
 		tmp->total_waiting += 0; // TODO calculate
 
@@ -107,7 +111,8 @@ struct node_t* dequeue_ready(){
 	return tmp;
 }
 
-void throw_unexpected(const char *err_msg){
+void throw_unexpected(const char *err_msg)
+{
 	fprintf(stderr, "%s\n", err_msg);
 	exit(1);
 }

@@ -13,3 +13,6 @@ $(OBJS): %.o: %.c
 
 clean:
 	rm -rf *.o scheduling_simulator
+
+astyle:
+	astyle --style=linux --indent=tab --max-code-length=80 --suffix=none *.c *.h
