@@ -21,25 +21,26 @@ void invalid(const char* err_input, const char* type)
 	while(getchar() != '\n');
 }
 
-void print_all(){
+void print_all()
+{
 	struct node_t* tmp = LIST_HEAD.next;
-	while(tmp != &LIST_HEAD){
+	while(tmp != &LIST_HEAD) {
 		char state[20];
-		switch(tmp->state){
-			case TASK_RUNNING:
-				strcpy(state, "TASK_RUNNING");
-				break;
-			case TASK_READY:
-				strcpy(state, "TASK_READY");
-				break;
-			case TASK_WAITING:
-				strcpy(state, "TASK_WAITING");
-				break;
-			case TASK_TERMINATED:
-				strcpy(state, "TASK_TERMINATED");
-				break;
-			default:
-				throw_unexpected("state not found\n");
+		switch(tmp->state) {
+		case TASK_RUNNING:
+			strcpy(state, "TASK_RUNNING");
+			break;
+		case TASK_READY:
+			strcpy(state, "TASK_READY");
+			break;
+		case TASK_WAITING:
+			strcpy(state, "TASK_WAITING");
+			break;
+		case TASK_TERMINATED:
+			strcpy(state, "TASK_TERMINATED");
+			break;
+		default:
+			throw_unexpected("state not found\n");
 
 		}
 		printf("%d %s %-17s %d\n", tmp->pid, tmp->task_name, state, tmp->quantum_time);
@@ -86,10 +87,10 @@ void shell_mode()
 			bool more_char = false;
 			while(getchar()!='\n')
 				more_char = true;
-			if(!more_char && n == 1){
+			if(!more_char && n == 1) {
 				if(remove_task(pid) < 0)
 					printf("pid %d does not exist\n", pid);
-			}else{
+			} else {
 				puts("Invalid parameter for remove");
 				continue;
 			}
@@ -203,24 +204,25 @@ void enqueue_ready(struct node_t *node)
 struct node_t* dequeue_ready()
 {
 	struct node_t* tmp = READY_HEAD.next_ready;
-	if(tmp != &READY_HEAD){
+	if(tmp != &READY_HEAD) {
 		// add waiting time
 		tmp->total_waiting += 0; // TODO calculate
 		tmp->prev_ready->next_ready = tmp->next_ready;
 		tmp->next_ready->prev_ready = tmp->prev_ready;
 		tmp->prev_ready = NULL;
 		tmp->next_ready = NULL;
-		
-	}else{
+
+	} else {
 		puts("ready queue empty");
 	}
 	return tmp;
 }
 
-int remove_task(int pid){
+int remove_task(int pid)
+{
 	struct node_t* iter = LIST_HEAD.next;
-	while(iter != &LIST_HEAD){
-		if(iter->pid == pid){
+	while(iter != &LIST_HEAD) {
+		if(iter->pid == pid) {
 			iter->next->prev = iter->prev;
 			iter->prev->next = iter->next;
 			iter->next_ready->prev_ready = iter->prev_ready;
@@ -234,7 +236,8 @@ int remove_task(int pid){
 	return -1;
 }
 
-void list_init(){
+void list_init()
+{
 	LIST_HEAD.prev = &LIST_HEAD;
 	LIST_HEAD.next = &LIST_HEAD;
 	READY_HEAD.prev_ready = &READY_HEAD;
