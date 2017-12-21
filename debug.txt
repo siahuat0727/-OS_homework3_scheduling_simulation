@@ -1,1 +1,2 @@
 gcc -std=gnu99 -Wall -c scheduling_simulator.c -o scheduling_simulator.o
+gcc -std=gnu99 -Wall -c scheduling_simulator.c -o scheduling_simulator.o

@@ -1,7 +1,11 @@
 #include "task.h"
+#define DEBUG
 
 void task1(void)   // may terminated
 {
+#ifdef DEBUG
+	puts("I'm task1");
+#endif
 	unsigned int a = ~0;
 
 	while (a != 0) {
@@ -11,6 +15,9 @@ void task1(void)   // may terminated
 
 void task2(void) // run infinite
 {
+#ifdef DEBUG
+	puts("I'm task2");
+#endif
 	unsigned int a = 0;
 
 	while (1) {
