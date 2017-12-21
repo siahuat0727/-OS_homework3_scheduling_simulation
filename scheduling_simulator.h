@@ -26,7 +26,7 @@ struct node_t {
 	char task_name[6];
 
 	// unit = ms
-	unsigned int total_waiting; 
+	unsigned int total_waiting;
 	unsigned int start_waiting;
 	unsigned int sleep_time;
 

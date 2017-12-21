@@ -14,7 +14,8 @@ int main()
 	return 0;
 }
 
-int set_timer(int msec){
+int set_timer(int msec)
+{
 	printf("set timer %d\n", msec);
 	struct itimerval count_down;
 	count_down.it_value.tv_sec = 0;
@@ -24,7 +25,8 @@ int set_timer(int msec){
 	return setitimer(ITIMER_REAL, &count_down, NULL);
 }
 
-void timer_handler(int n){
+void timer_handler(int n)
+{
 	puts("in timer handler");
 	swapcontext(&(RUNNING_TASK->context), &SIMULATOR);
 //	if(running_task != NULL){
@@ -42,13 +44,15 @@ void ctrl_z_handler(int n)
 }
 
 
-unsigned int get_time(){
+unsigned int get_time()
+{
 	struct timeval tv;
 	gettimeofday(&tv, NULL);
 	return tv.tv_sec*1000 + tv.tv_usec/1000;
 }
 
-int set_to_running(struct node_t* task){
+int set_to_running(struct node_t* task)
+{
 	printf("set pid %d to run\n", task->pid);
 	// calculate waiting time
 	dequeue_ready(task);
@@ -59,23 +63,25 @@ int set_to_running(struct node_t* task){
 	return setcontext(&(task->context));
 }
 
-bool any_ready_task(){
+bool any_ready_task()
+{
 	return READY_HEAD.next_ready != &READY_HEAD;
 }
 
 
 // running
-void simulating(){
+void simulating()
+{
 	getcontext(&SIMULATOR);
 	puts("in simulating");
 
 	// if anyone running, set to ready + add waiting queue
-	if(RUNNING_TASK != NULL){
+	if(RUNNING_TASK != NULL) {
 		struct node_t *iter;
-		for_each_node(&LIST_HEAD, iter){
+		for_each_node(&LIST_HEAD, iter) {
 			if(iter->state == TASK_WAITING)
 				iter->sleep_time -= RUNNING_TASK->quantum_time;
-			if(iter->sleep_time < 0){
+			if(iter->sleep_time < 0) {
 				iter->total_waiting += -iter->sleep_time;
 				enqueue_ready(iter);
 			}
@@ -83,14 +89,14 @@ void simulating(){
 		enqueue_ready(RUNNING_TASK);
 	}
 
-	if(any_ready_task()){
+	if(any_ready_task()) {
 #ifdef DEBUG
 		puts("found task to run");
 #endif
 		struct node_t *first_ready = READY_HEAD.next_ready;
 
 		// count down
-		if(set_timer(first_ready->quantum_time)){
+		if(set_timer(first_ready->quantum_time)) {
 			puts("set timer failed");
 			exit(1);
 		}
@@ -104,7 +110,7 @@ void simulating(){
 		perror("setcontext failed");
 		exit(1);
 
-	}else{
+	} else {
 		puts("no ready task");
 	}
 
@@ -194,7 +200,7 @@ void shell_mode()
 		} else if(!strcmp(input, "ps")) {
 			print_all();
 		} else if(!strcmp(input, "start")) {
-			break; // TODO check if any other input 
+			break; // TODO check if any other input
 		} else {
 			invalid(input, "command");
 			continue;
