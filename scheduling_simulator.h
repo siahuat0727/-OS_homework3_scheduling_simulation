@@ -9,7 +9,6 @@
 #include <sys/time.h>
 #include <ucontext.h>
 #include <signal.h>
-
 #include "task.h"
 
 enum TASK_STATE {
@@ -18,6 +17,9 @@ enum TASK_STATE {
 	TASK_WAITING,
 	TASK_TERMINATED
 };
+
+typedef void(*func)(void);
+func TASKS[6];
 
 struct node_t {
 	int pid;
@@ -48,21 +50,24 @@ int hw_wakeup_taskname(char *task_name);
 int hw_task_create(char *task_name);
 
 int set_timer(int msec);
-void timer_handler(int n);
 unsigned int get_time();
 int set_to_running(struct node_t* task);
 bool any_ready_task();
 void simulating();
+
 int enqueue(char* task, int quantum_time);
+int remove_task();
 void enqueue_ready(struct node_t *node);
 struct node_t* dequeue_ready();
+
 void shell_mode();
-void throw_unexpected(const char *err_msg);
-void ctrl_z_handler(int n);
+void signal_handler(int sig);
+void tasks_init();
 void list_init();
-int remove_task();
-void invalid(const char* err_input, const char* type);
 void print_all();
+
+void throw_unexpected(const char *err_msg);
+void invalid(const char* err_input, const char* type);
 
 ucontext_t SIMULATOR;
 struct node_t* RUNNING_TASK;

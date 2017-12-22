@@ -5,69 +5,109 @@
 
 int main()
 {
-	signal(SIGTSTP, ctrl_z_handler);
-	signal(SIGALRM, timer_handler);
+	signal(SIGTSTP, signal_handler);
+	signal(SIGALRM, signal_handler);
+
 	list_init();
+	tasks_init();
+
 	shell_mode();
 	simulating();
-	while(1);
+	while(1)
+		puts("while in main");
 	return 0;
 }
 
-int set_timer(int msec)
+void list_init()
 {
-	printf("set timer %d\n", msec);
-	struct itimerval count_down;
-	count_down.it_value.tv_sec = 0;
-	count_down.it_value.tv_usec = msec * 1000;
-	count_down.it_interval.tv_sec = 0;
-	count_down.it_interval.tv_usec = 0;
-	return setitimer(ITIMER_REAL, &count_down, NULL);
+	LIST_HEAD.prev = &LIST_HEAD;
+	LIST_HEAD.next = &LIST_HEAD;
+	READY_HEAD.prev_ready = &READY_HEAD;
+	READY_HEAD.next_ready = &READY_HEAD;
 }
 
-void timer_handler(int n)
+void tasks_init()
 {
-	puts("in timer handler");
-	swapcontext(&(RUNNING_TASK->context), &SIMULATOR);
-//	if(running_task != NULL){
-//		enqueue_ready(running_task);
-//
-//	}
+	func tasks_default[6] = {task1, task2, task3, task4, task5, task6};
+	memcpy(TASKS, tasks_default, sizeof(tasks_default));
 }
 
-void ctrl_z_handler(int n)
+bool my_sscanf(char** buf, char* dest)
 {
-	// TODO if someone running, pull back to ready
-
-	puts("in ctrl z handler");
-	shell_mode();
+	if(sscanf(*buf, "%s", dest) < 0)
+		return false;
+	*buf += strlen(dest);
+	while(**buf == ' ')
+		++*buf;
+	return true;
 }
 
-
-unsigned int get_time()
+void shell_mode()
 {
-	struct timeval tv;
-	gettimeofday(&tv, NULL);
-	return tv.tv_sec*1000 + tv.tv_usec/1000;
+	while(1) {
+		printf("$ ");
+		char buf[1000];
+		fgets(buf, sizeof(buf), stdin);
+		char* buf_ptr = (char*)buf;
+		char command[100];
+		my_sscanf(&buf_ptr, command);
+
+		if(!strcmp(command, "add")) {
+			// get task name
+			char task_name[20];
+			my_sscanf(&buf_ptr, task_name);
+
+			int quantum_time = 10;
+
+			// try to get option and argument
+			char option[20];
+			if(my_sscanf(&buf_ptr, option)) {
+				if(strcmp(option, "-t")) {
+					printf("%s: option not found\n", option);
+					continue;
+				}
+				char argument[20];
+				my_sscanf(&buf_ptr, argument);
+				if(!strcmp(argument, "S"))
+					quantum_time = 10;
+				else if(!strcmp(argument, "L"))
+					quantum_time = 20;
+				else {
+					printf("%s: invalid argument\n", argument);
+					continue;
+				}
+			}
+
+			int ret_val = enqueue(task_name, quantum_time);
+			if(ret_val == -1) {
+				printf("%s: task_name not found\n", task_name);
+				continue;
+			}
+
+		} else if(!strcmp(command, "remove")) {
+			int n, pid;
+			n = scanf("%d", &pid);
+			bool more_char = false;
+			while(getchar()!='\n')
+				more_char = true;
+			if(!more_char && n == 1) {
+				if(remove_task(pid) < 0)
+					printf("pid %d does not exist\n", pid);
+			} else {
+				puts("Invalid parameter for remove");
+				continue;
+			}
+
+		} else if(!strcmp(command, "ps")) {
+			print_all();
+		} else if(!strcmp(command, "start")) {
+			break; // TODO check if any other input
+		} else {
+			printf("%s: command not found\n", command);
+			continue;
+		}
+	}
 }
-
-int set_to_running(struct node_t* task)
-{
-	printf("set pid %d to run\n", task->pid);
-	// calculate waiting time
-	dequeue_ready(task);
-
-	// set to running
-	task->state = TASK_RUNNING;
-	RUNNING_TASK = task;
-	return setcontext(&(task->context));
-}
-
-bool any_ready_task()
-{
-	return READY_HEAD.next_ready != &READY_HEAD;
-}
-
 
 // running
 void simulating()
@@ -116,12 +156,60 @@ void simulating()
 
 }
 
-// print error messange and consume all other input
-void invalid(const char* err_input, const char* type)
+int set_timer(int msec)
 {
-	printf("%s: %s not found\n", err_input, type);
-	while(getchar() != '\n');
+	printf("set timer %d\n", msec);
+	struct itimerval count_down;
+	count_down.it_value.tv_sec = 0;
+	count_down.it_value.tv_usec = msec * 1000;
+	count_down.it_interval.tv_sec = 0;
+	count_down.it_interval.tv_usec = 0;
+	return setitimer(ITIMER_REAL, &count_down, NULL);
 }
+
+void signal_handler(int sig)
+{
+	if(sig == SIGALRM) {
+		puts("in timer handler");
+		swapcontext(&(RUNNING_TASK->context), &SIMULATOR);
+		//	if(running_task != NULL){
+		//		enqueue_ready(running_task);
+		//
+		//	}
+	} else if(sig == SIGTSTP) {
+		puts("in ctrl z handler");
+
+		// TODO if someone running, pull back to ready
+		shell_mode();
+	} else {
+		throw_unexpected("unexpected signal");
+	}
+}
+
+unsigned int get_time()
+{
+	struct timeval tv;
+	gettimeofday(&tv, NULL);
+	return tv.tv_sec*1000 + tv.tv_usec/1000;
+}
+
+int set_to_running(struct node_t* task)
+{
+	printf("set pid %d to run\n", task->pid);
+	// calculate waiting time
+	dequeue_ready(task);
+
+	// set to running
+	task->state = TASK_RUNNING;
+	RUNNING_TASK = task;
+	return setcontext(&(task->context));
+}
+
+bool any_ready_task()
+{
+	return READY_HEAD.next_ready != &READY_HEAD;
+}
+
 
 void print_all()
 {
@@ -147,64 +235,6 @@ void print_all()
 		}
 		printf("%d %s %-17s %d\n", tmp->pid, tmp->task_name, state, tmp->quantum_time);
 		tmp = tmp->next;
-	}
-}
-
-void shell_mode()
-{
-	while(1) {
-		printf("$ ");
-		char input[100];
-		scanf("%s", input);
-		if(!strcmp(input, "add")) {
-			char task_name[20];
-			scanf("%s", task_name);
-
-			// get option
-			scanf("%s", input);
-			if(strcmp(input, "-t")) {
-				invalid(input, "option");
-				continue;
-			}
-
-			// get option argument
-			int quantum_time = 10;
-			scanf("%s", input);
-			if(!strcmp(input, "S") || !strcmp(input, "L")) {
-				if(input[0] == 'L')
-					quantum_time = 20;
-			} else {
-				invalid(input, "argument");
-				continue;
-			}
-			int ret_val = enqueue(task_name, quantum_time);
-			if(ret_val == -1) {
-				invalid(task_name, "task");
-				continue;
-			}
-
-		} else if(!strcmp(input, "remove")) {
-			int n, pid;
-			n = scanf("%d", &pid);
-			bool more_char = false;
-			while(getchar()!='\n')
-				more_char = true;
-			if(!more_char && n == 1) {
-				if(remove_task(pid) < 0)
-					printf("pid %d does not exist\n", pid);
-			} else {
-				puts("Invalid parameter for remove");
-				continue;
-			}
-
-		} else if(!strcmp(input, "ps")) {
-			print_all();
-		} else if(!strcmp(input, "start")) {
-			break; // TODO check if any other input
-		} else {
-			invalid(input, "command");
-			continue;
-		}
 	}
 }
 
@@ -342,13 +372,6 @@ int remove_task(int pid)
 	return -1;
 }
 
-void list_init()
-{
-	LIST_HEAD.prev = &LIST_HEAD;
-	LIST_HEAD.next = &LIST_HEAD;
-	READY_HEAD.prev_ready = &READY_HEAD;
-	READY_HEAD.next_ready = &READY_HEAD;
-}
 
 void throw_unexpected(const char *err_msg)
 {
