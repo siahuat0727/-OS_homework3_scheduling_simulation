@@ -6,6 +6,7 @@
 #include <stdbool.h>
 #include <string.h>
 #include <time.h>
+#include <assert.h>
 #include <sys/time.h>
 #include <ucontext.h>
 #include <signal.h>
@@ -65,6 +66,7 @@ void signal_handler(int sig);
 void tasks_init();
 void list_init();
 void print_all();
+void print_ready_queue();
 
 void throw_unexpected(const char *err_msg);
 void invalid(const char* err_input, const char* type);

@@ -1,2 +1,12673 @@
 gcc -std=gnu99 -Wall -c scheduling_simulator.c -o scheduling_simulator.o
 gcc -std=gnu99 -Wall -c scheduling_simulator.c -o scheduling_simulator.o
+$ pid 1 enqueue ready
+$ pid 2 enqueue ready
+$ in simulating
+print all:
+1 task1 TASK_READY        0
+2 task2 TASK_READY        0
+
+print ready queue:
+1 task1 0
+2 task2 0
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+I'm task1
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      0
+2 task2 TASK_READY        0
+
+print ready queue:
+2 task2 0
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+I'm task1
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        0
+2 task2 TASK_RUNNING      10
+
+print ready queue:
+1 task1 0
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      11
+2 task2 TASK_READY        10
+
+print ready queue:
+2 task2 10
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        11
+2 task2 TASK_RUNNING      20
+
+print ready queue:
+1 task1 11
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      22
+2 task2 TASK_READY        20
+
+print ready queue:
+2 task2 20
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        22
+2 task2 TASK_RUNNING      30
+
+print ready queue:
+1 task1 22
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      33
+2 task2 TASK_READY        30
+
+print ready queue:
+2 task2 30
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        33
+2 task2 TASK_RUNNING      40
+
+print ready queue:
+1 task1 33
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      43
+2 task2 TASK_READY        40
+
+print ready queue:
+2 task2 40
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        43
+2 task2 TASK_RUNNING      51
+
+print ready queue:
+1 task1 43
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      53
+2 task2 TASK_READY        51
+
+print ready queue:
+2 task2 51
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        53
+2 task2 TASK_RUNNING      62
+
+print ready queue:
+1 task1 53
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      63
+2 task2 TASK_READY        62
+
+print ready queue:
+2 task2 62
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        63
+2 task2 TASK_RUNNING      73
+
+print ready queue:
+1 task1 63
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      73
+2 task2 TASK_READY        73
+
+print ready queue:
+2 task2 73
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        73
+2 task2 TASK_RUNNING      84
+
+print ready queue:
+1 task1 73
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      83
+2 task2 TASK_READY        84
+
+print ready queue:
+2 task2 84
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        83
+2 task2 TASK_RUNNING      95
+
+print ready queue:
+1 task1 83
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      94
+2 task2 TASK_READY        95
+
+print ready queue:
+2 task2 95
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        94
+2 task2 TASK_RUNNING      105
+
+print ready queue:
+1 task1 94
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      105
+2 task2 TASK_READY        105
+
+print ready queue:
+2 task2 105
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        105
+2 task2 TASK_RUNNING      115
+
+print ready queue:
+1 task1 105
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      115
+2 task2 TASK_READY        115
+
+print ready queue:
+2 task2 115
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        115
+2 task2 TASK_RUNNING      126
+
+print ready queue:
+1 task1 115
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      125
+2 task2 TASK_READY        126
+
+print ready queue:
+2 task2 126
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        125
+2 task2 TASK_RUNNING      137
+
+print ready queue:
+1 task1 125
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      135
+2 task2 TASK_READY        137
+
+print ready queue:
+2 task2 137
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        135
+2 task2 TASK_RUNNING      148
+
+print ready queue:
+1 task1 135
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      145
+2 task2 TASK_READY        148
+
+print ready queue:
+2 task2 148
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        145
+2 task2 TASK_RUNNING      159
+
+print ready queue:
+1 task1 145
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      155
+2 task2 TASK_READY        159
+
+print ready queue:
+2 task2 159
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        155
+2 task2 TASK_RUNNING      169
+
+print ready queue:
+1 task1 155
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      166
+2 task2 TASK_READY        169
+
+print ready queue:
+2 task2 169
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        166
+2 task2 TASK_RUNNING      179
+
+print ready queue:
+1 task1 166
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      177
+2 task2 TASK_READY        179
+
+print ready queue:
+2 task2 179
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        177
+2 task2 TASK_RUNNING      190
+
+print ready queue:
+1 task1 177
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      187
+2 task2 TASK_READY        190
+
+print ready queue:
+2 task2 190
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        187
+2 task2 TASK_RUNNING      201
+
+print ready queue:
+1 task1 187
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      197
+2 task2 TASK_READY        201
+
+print ready queue:
+2 task2 201
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        197
+2 task2 TASK_RUNNING      212
+
+print ready queue:
+1 task1 197
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      207
+2 task2 TASK_READY        212
+
+print ready queue:
+2 task2 212
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        207
+2 task2 TASK_RUNNING      222
+
+print ready queue:
+1 task1 207
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      218
+2 task2 TASK_READY        222
+
+print ready queue:
+2 task2 222
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        218
+2 task2 TASK_RUNNING      232
+
+print ready queue:
+1 task1 218
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      229
+2 task2 TASK_READY        232
+
+print ready queue:
+2 task2 232
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        229
+2 task2 TASK_RUNNING      242
+
+print ready queue:
+1 task1 229
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      239
+2 task2 TASK_READY        242
+
+print ready queue:
+2 task2 242
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        239
+2 task2 TASK_RUNNING      253
+
+print ready queue:
+1 task1 239
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      249
+2 task2 TASK_READY        253
+
+print ready queue:
+2 task2 253
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        249
+2 task2 TASK_RUNNING      263
+
+print ready queue:
+1 task1 249
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      260
+2 task2 TASK_READY        263
+
+print ready queue:
+2 task2 263
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        260
+2 task2 TASK_RUNNING      273
+
+print ready queue:
+1 task1 260
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      271
+2 task2 TASK_READY        273
+
+print ready queue:
+2 task2 273
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        271
+2 task2 TASK_RUNNING      283
+
+print ready queue:
+1 task1 271
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      282
+2 task2 TASK_READY        283
+
+print ready queue:
+2 task2 283
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        282
+2 task2 TASK_RUNNING      293
+
+print ready queue:
+1 task1 282
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      293
+2 task2 TASK_READY        293
+
+print ready queue:
+2 task2 293
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        293
+2 task2 TASK_RUNNING      303
+
+print ready queue:
+1 task1 293
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      303
+2 task2 TASK_READY        303
+
+print ready queue:
+2 task2 303
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        303
+2 task2 TASK_RUNNING      314
+
+print ready queue:
+1 task1 303
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      313
+2 task2 TASK_READY        314
+
+print ready queue:
+2 task2 314
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        313
+2 task2 TASK_RUNNING      325
+
+print ready queue:
+1 task1 313
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      323
+2 task2 TASK_READY        325
+
+print ready queue:
+2 task2 325
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        323
+2 task2 TASK_RUNNING      335
+
+print ready queue:
+1 task1 323
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      334
+2 task2 TASK_READY        335
+
+print ready queue:
+2 task2 335
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        334
+2 task2 TASK_RUNNING      345
+
+print ready queue:
+1 task1 334
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      345
+2 task2 TASK_READY        345
+
+print ready queue:
+2 task2 345
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        345
+2 task2 TASK_RUNNING      355
+
+print ready queue:
+1 task1 345
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      355
+2 task2 TASK_READY        355
+
+print ready queue:
+2 task2 355
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        355
+2 task2 TASK_RUNNING      366
+
+print ready queue:
+1 task1 355
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      365
+2 task2 TASK_READY        366
+
+print ready queue:
+2 task2 366
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        365
+2 task2 TASK_RUNNING      377
+
+print ready queue:
+1 task1 365
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      376
+2 task2 TASK_READY        377
+
+print ready queue:
+2 task2 377
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        376
+2 task2 TASK_RUNNING      387
+
+print ready queue:
+1 task1 376
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      387
+2 task2 TASK_READY        387
+
+print ready queue:
+2 task2 387
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        387
+2 task2 TASK_RUNNING      397
+
+print ready queue:
+1 task1 387
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      397
+2 task2 TASK_READY        397
+
+print ready queue:
+2 task2 397
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        397
+2 task2 TASK_RUNNING      408
+
+print ready queue:
+1 task1 397
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      407
+2 task2 TASK_READY        408
+
+print ready queue:
+2 task2 408
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        407
+2 task2 TASK_RUNNING      419
+
+print ready queue:
+1 task1 407
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      417
+2 task2 TASK_READY        419
+
+print ready queue:
+2 task2 419
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        417
+2 task2 TASK_RUNNING      429
+
+print ready queue:
+1 task1 417
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      428
+2 task2 TASK_READY        429
+
+print ready queue:
+2 task2 429
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        428
+2 task2 TASK_RUNNING      439
+
+print ready queue:
+1 task1 428
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      439
+2 task2 TASK_READY        439
+
+print ready queue:
+2 task2 439
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        439
+2 task2 TASK_RUNNING      449
+
+print ready queue:
+1 task1 439
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      450
+2 task2 TASK_READY        449
+
+print ready queue:
+2 task2 449
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        450
+2 task2 TASK_RUNNING      459
+
+print ready queue:
+1 task1 450
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      461
+2 task2 TASK_READY        459
+
+print ready queue:
+2 task2 459
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        461
+2 task2 TASK_RUNNING      469
+
+print ready queue:
+1 task1 461
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      472
+2 task2 TASK_READY        469
+
+print ready queue:
+2 task2 469
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        472
+2 task2 TASK_RUNNING      479
+
+print ready queue:
+1 task1 472
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      483
+2 task2 TASK_READY        479
+
+print ready queue:
+2 task2 479
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        483
+2 task2 TASK_RUNNING      489
+
+print ready queue:
+1 task1 483
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      494
+2 task2 TASK_READY        489
+
+print ready queue:
+2 task2 489
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        494
+2 task2 TASK_RUNNING      499
+
+print ready queue:
+1 task1 494
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      505
+2 task2 TASK_READY        499
+
+print ready queue:
+2 task2 499
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        505
+2 task2 TASK_RUNNING      509
+
+print ready queue:
+1 task1 505
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      516
+2 task2 TASK_READY        509
+
+print ready queue:
+2 task2 509
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        516
+2 task2 TASK_RUNNING      519
+
+print ready queue:
+1 task1 516
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      526
+2 task2 TASK_READY        519
+
+print ready queue:
+2 task2 519
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        526
+2 task2 TASK_RUNNING      530
+
+print ready queue:
+1 task1 526
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      536
+2 task2 TASK_READY        530
+
+print ready queue:
+2 task2 530
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        536
+2 task2 TASK_RUNNING      540
+
+print ready queue:
+1 task1 536
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      547
+2 task2 TASK_READY        540
+
+print ready queue:
+2 task2 540
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        547
+2 task2 TASK_RUNNING      550
+
+print ready queue:
+1 task1 547
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      558
+2 task2 TASK_READY        550
+
+print ready queue:
+2 task2 550
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        558
+2 task2 TASK_RUNNING      560
+
+print ready queue:
+1 task1 558
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      569
+2 task2 TASK_READY        560
+
+print ready queue:
+2 task2 560
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        569
+2 task2 TASK_RUNNING      570
+
+print ready queue:
+1 task1 569
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      580
+2 task2 TASK_READY        570
+
+print ready queue:
+2 task2 570
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        580
+2 task2 TASK_RUNNING      580
+
+print ready queue:
+1 task1 580
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      590
+2 task2 TASK_READY        580
+
+print ready queue:
+2 task2 580
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        590
+2 task2 TASK_RUNNING      591
+
+print ready queue:
+1 task1 590
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      600
+2 task2 TASK_READY        591
+
+print ready queue:
+2 task2 591
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        600
+2 task2 TASK_RUNNING      602
+
+print ready queue:
+1 task1 600
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      610
+2 task2 TASK_READY        602
+
+print ready queue:
+2 task2 602
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        610
+2 task2 TASK_RUNNING      612
+
+print ready queue:
+1 task1 610
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      621
+2 task2 TASK_READY        612
+
+print ready queue:
+2 task2 612
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        621
+2 task2 TASK_RUNNING      622
+
+print ready queue:
+1 task1 621
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      632
+2 task2 TASK_READY        622
+
+print ready queue:
+2 task2 622
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        632
+2 task2 TASK_RUNNING      632
+
+print ready queue:
+1 task1 632
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      643
+2 task2 TASK_READY        632
+
+print ready queue:
+2 task2 632
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        643
+2 task2 TASK_RUNNING      642
+
+print ready queue:
+1 task1 643
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      653
+2 task2 TASK_READY        642
+
+print ready queue:
+2 task2 642
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        653
+2 task2 TASK_RUNNING      653
+
+print ready queue:
+1 task1 653
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      663
+2 task2 TASK_READY        653
+
+print ready queue:
+2 task2 653
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        663
+2 task2 TASK_RUNNING      664
+
+print ready queue:
+1 task1 663
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      674
+2 task2 TASK_READY        664
+
+print ready queue:
+2 task2 664
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        674
+2 task2 TASK_RUNNING      674
+
+print ready queue:
+1 task1 674
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      685
+2 task2 TASK_READY        674
+
+print ready queue:
+2 task2 674
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        685
+2 task2 TASK_RUNNING      684
+
+print ready queue:
+1 task1 685
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      695
+2 task2 TASK_READY        684
+
+print ready queue:
+2 task2 684
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        695
+2 task2 TASK_RUNNING      695
+
+print ready queue:
+1 task1 695
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      705
+2 task2 TASK_READY        695
+
+print ready queue:
+2 task2 695
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        705
+2 task2 TASK_RUNNING      705
+
+print ready queue:
+1 task1 705
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      716
+2 task2 TASK_READY        705
+
+print ready queue:
+2 task2 705
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        716
+2 task2 TASK_RUNNING      715
+
+print ready queue:
+1 task1 716
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      727
+2 task2 TASK_READY        715
+
+print ready queue:
+2 task2 715
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        727
+2 task2 TASK_RUNNING      725
+
+print ready queue:
+1 task1 727
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      738
+2 task2 TASK_READY        725
+
+print ready queue:
+2 task2 725
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        738
+2 task2 TASK_RUNNING      735
+
+print ready queue:
+1 task1 738
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      749
+2 task2 TASK_READY        735
+
+print ready queue:
+2 task2 735
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        749
+2 task2 TASK_RUNNING      745
+
+print ready queue:
+1 task1 749
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      760
+2 task2 TASK_READY        745
+
+print ready queue:
+2 task2 745
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        760
+2 task2 TASK_RUNNING      755
+
+print ready queue:
+1 task1 760
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      771
+2 task2 TASK_READY        755
+
+print ready queue:
+2 task2 755
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        771
+2 task2 TASK_RUNNING      765
+
+print ready queue:
+1 task1 771
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      781
+2 task2 TASK_READY        765
+
+print ready queue:
+2 task2 765
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        781
+2 task2 TASK_RUNNING      776
+
+print ready queue:
+1 task1 781
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      791
+2 task2 TASK_READY        776
+
+print ready queue:
+2 task2 776
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        791
+2 task2 TASK_RUNNING      787
+
+print ready queue:
+1 task1 791
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      801
+2 task2 TASK_READY        787
+
+print ready queue:
+2 task2 787
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        801
+2 task2 TASK_RUNNING      797
+
+print ready queue:
+1 task1 801
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      812
+2 task2 TASK_READY        797
+
+print ready queue:
+2 task2 797
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        812
+2 task2 TASK_RUNNING      807
+
+print ready queue:
+1 task1 812
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      823
+2 task2 TASK_READY        807
+
+print ready queue:
+2 task2 807
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        823
+2 task2 TASK_RUNNING      817
+
+print ready queue:
+1 task1 823
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      834
+2 task2 TASK_READY        817
+
+print ready queue:
+2 task2 817
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        834
+2 task2 TASK_RUNNING      827
+
+print ready queue:
+1 task1 834
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      845
+2 task2 TASK_READY        827
+
+print ready queue:
+2 task2 827
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        845
+2 task2 TASK_RUNNING      838
+
+print ready queue:
+1 task1 845
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      855
+2 task2 TASK_READY        838
+
+print ready queue:
+2 task2 838
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        855
+2 task2 TASK_RUNNING      849
+
+print ready queue:
+1 task1 855
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      865
+2 task2 TASK_READY        849
+
+print ready queue:
+2 task2 849
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        865
+2 task2 TASK_RUNNING      860
+
+print ready queue:
+1 task1 865
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      875
+2 task2 TASK_READY        860
+
+print ready queue:
+2 task2 860
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        875
+2 task2 TASK_RUNNING      870
+
+print ready queue:
+1 task1 875
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      886
+2 task2 TASK_READY        870
+
+print ready queue:
+2 task2 870
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        886
+2 task2 TASK_RUNNING      880
+
+print ready queue:
+1 task1 886
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      896
+2 task2 TASK_READY        880
+
+print ready queue:
+2 task2 880
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        896
+2 task2 TASK_RUNNING      891
+
+print ready queue:
+1 task1 896
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      906
+2 task2 TASK_READY        891
+
+print ready queue:
+2 task2 891
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        906
+2 task2 TASK_RUNNING      902
+
+print ready queue:
+1 task1 906
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      916
+2 task2 TASK_READY        902
+
+print ready queue:
+2 task2 902
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        916
+2 task2 TASK_RUNNING      913
+
+print ready queue:
+1 task1 916
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      926
+2 task2 TASK_READY        913
+
+print ready queue:
+2 task2 913
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        926
+2 task2 TASK_RUNNING      924
+
+print ready queue:
+1 task1 926
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      936
+2 task2 TASK_READY        924
+
+print ready queue:
+2 task2 924
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        936
+2 task2 TASK_RUNNING      935
+
+print ready queue:
+1 task1 936
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      946
+2 task2 TASK_READY        935
+
+print ready queue:
+2 task2 935
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        946
+2 task2 TASK_RUNNING      946
+
+print ready queue:
+1 task1 946
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      956
+2 task2 TASK_READY        946
+
+print ready queue:
+2 task2 946
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        956
+2 task2 TASK_RUNNING      957
+
+print ready queue:
+1 task1 956
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      966
+2 task2 TASK_READY        957
+
+print ready queue:
+2 task2 957
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        966
+2 task2 TASK_RUNNING      968
+
+print ready queue:
+1 task1 966
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      976
+2 task2 TASK_READY        968
+
+print ready queue:
+2 task2 968
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        976
+2 task2 TASK_RUNNING      979
+
+print ready queue:
+1 task1 976
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      986
+2 task2 TASK_READY        979
+
+print ready queue:
+2 task2 979
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        986
+2 task2 TASK_RUNNING      990
+
+print ready queue:
+1 task1 986
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      996
+2 task2 TASK_READY        990
+
+print ready queue:
+2 task2 990
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        996
+2 task2 TASK_RUNNING      1001
+
+print ready queue:
+1 task1 996
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1006
+2 task2 TASK_READY        1001
+
+print ready queue:
+2 task2 1001
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1006
+2 task2 TASK_RUNNING      1011
+
+print ready queue:
+1 task1 1006
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1017
+2 task2 TASK_READY        1011
+
+print ready queue:
+2 task2 1011
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1017
+2 task2 TASK_RUNNING      1021
+
+print ready queue:
+1 task1 1017
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1028
+2 task2 TASK_READY        1021
+
+print ready queue:
+2 task2 1021
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1028
+2 task2 TASK_RUNNING      1031
+
+print ready queue:
+1 task1 1028
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1039
+2 task2 TASK_READY        1031
+
+print ready queue:
+2 task2 1031
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1039
+2 task2 TASK_RUNNING      1041
+
+print ready queue:
+1 task1 1039
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1050
+2 task2 TASK_READY        1041
+
+print ready queue:
+2 task2 1041
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1050
+2 task2 TASK_RUNNING      1051
+
+print ready queue:
+1 task1 1050
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1061
+2 task2 TASK_READY        1051
+
+print ready queue:
+2 task2 1051
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1061
+2 task2 TASK_RUNNING      1061
+
+print ready queue:
+1 task1 1061
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1071
+2 task2 TASK_READY        1061
+
+print ready queue:
+2 task2 1061
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1071
+2 task2 TASK_RUNNING      1072
+
+print ready queue:
+1 task1 1071
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1081
+2 task2 TASK_READY        1072
+
+print ready queue:
+2 task2 1072
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1081
+2 task2 TASK_RUNNING      1082
+
+print ready queue:
+1 task1 1081
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1092
+2 task2 TASK_READY        1082
+
+print ready queue:
+2 task2 1082
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1092
+2 task2 TASK_RUNNING      1092
+
+print ready queue:
+1 task1 1092
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1103
+2 task2 TASK_READY        1092
+
+print ready queue:
+2 task2 1092
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1103
+2 task2 TASK_RUNNING      1102
+
+print ready queue:
+1 task1 1103
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1114
+2 task2 TASK_READY        1102
+
+print ready queue:
+2 task2 1102
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1114
+2 task2 TASK_RUNNING      1112
+
+print ready queue:
+1 task1 1114
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1125
+2 task2 TASK_READY        1112
+
+print ready queue:
+2 task2 1112
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1125
+2 task2 TASK_RUNNING      1123
+
+print ready queue:
+1 task1 1125
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1136
+2 task2 TASK_READY        1123
+
+print ready queue:
+2 task2 1123
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1136
+2 task2 TASK_RUNNING      1134
+
+print ready queue:
+1 task1 1136
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1146
+2 task2 TASK_READY        1134
+
+print ready queue:
+2 task2 1134
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1146
+2 task2 TASK_RUNNING      1145
+
+print ready queue:
+1 task1 1146
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1156
+2 task2 TASK_READY        1145
+
+print ready queue:
+2 task2 1145
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1156
+2 task2 TASK_RUNNING      1155
+
+print ready queue:
+1 task1 1156
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1167
+2 task2 TASK_READY        1155
+
+print ready queue:
+2 task2 1155
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1167
+2 task2 TASK_RUNNING      1165
+
+print ready queue:
+1 task1 1167
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1178
+2 task2 TASK_READY        1165
+
+print ready queue:
+2 task2 1165
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1178
+2 task2 TASK_RUNNING      1175
+
+print ready queue:
+1 task1 1178
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1188
+2 task2 TASK_READY        1175
+
+print ready queue:
+2 task2 1175
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1188
+2 task2 TASK_RUNNING      1186
+
+print ready queue:
+1 task1 1188
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1198
+2 task2 TASK_READY        1186
+
+print ready queue:
+2 task2 1186
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1198
+2 task2 TASK_RUNNING      1196
+
+print ready queue:
+1 task1 1198
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1209
+2 task2 TASK_READY        1196
+
+print ready queue:
+2 task2 1196
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1209
+2 task2 TASK_RUNNING      1206
+
+print ready queue:
+1 task1 1209
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1220
+2 task2 TASK_READY        1206
+
+print ready queue:
+2 task2 1206
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1220
+2 task2 TASK_RUNNING      1216
+
+print ready queue:
+1 task1 1220
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1231
+2 task2 TASK_READY        1216
+
+print ready queue:
+2 task2 1216
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1231
+2 task2 TASK_RUNNING      1227
+
+print ready queue:
+1 task1 1231
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1241
+2 task2 TASK_READY        1227
+
+print ready queue:
+2 task2 1227
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1241
+2 task2 TASK_RUNNING      1238
+
+print ready queue:
+1 task1 1241
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1251
+2 task2 TASK_READY        1238
+
+print ready queue:
+2 task2 1238
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1251
+2 task2 TASK_RUNNING      1248
+
+print ready queue:
+1 task1 1251
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1262
+2 task2 TASK_READY        1248
+
+print ready queue:
+2 task2 1248
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1262
+2 task2 TASK_RUNNING      1258
+
+print ready queue:
+1 task1 1262
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1273
+2 task2 TASK_READY        1258
+
+print ready queue:
+2 task2 1258
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1273
+2 task2 TASK_RUNNING      1268
+
+print ready queue:
+1 task1 1273
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1284
+2 task2 TASK_READY        1268
+
+print ready queue:
+2 task2 1268
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1284
+2 task2 TASK_RUNNING      1278
+
+print ready queue:
+1 task1 1284
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1294
+2 task2 TASK_READY        1278
+
+print ready queue:
+2 task2 1278
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1294
+2 task2 TASK_RUNNING      1288
+
+print ready queue:
+1 task1 1294
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1305
+2 task2 TASK_READY        1288
+
+print ready queue:
+2 task2 1288
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1305
+2 task2 TASK_RUNNING      1298
+
+print ready queue:
+1 task1 1305
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1316
+2 task2 TASK_READY        1298
+
+print ready queue:
+2 task2 1298
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1316
+2 task2 TASK_RUNNING      1309
+
+print ready queue:
+1 task1 1316
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1327
+2 task2 TASK_READY        1309
+
+print ready queue:
+2 task2 1309
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1327
+2 task2 TASK_RUNNING      1320
+
+print ready queue:
+1 task1 1327
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1337
+2 task2 TASK_READY        1320
+
+print ready queue:
+2 task2 1320
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1337
+2 task2 TASK_RUNNING      1331
+
+print ready queue:
+1 task1 1337
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1347
+2 task2 TASK_READY        1331
+
+print ready queue:
+2 task2 1331
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1347
+2 task2 TASK_RUNNING      1342
+
+print ready queue:
+1 task1 1347
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1357
+2 task2 TASK_READY        1342
+
+print ready queue:
+2 task2 1342
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1357
+2 task2 TASK_RUNNING      1353
+
+print ready queue:
+1 task1 1357
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1367
+2 task2 TASK_READY        1353
+
+print ready queue:
+2 task2 1353
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1367
+2 task2 TASK_RUNNING      1363
+
+print ready queue:
+1 task1 1367
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1378
+2 task2 TASK_READY        1363
+
+print ready queue:
+2 task2 1363
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1378
+2 task2 TASK_RUNNING      1373
+
+print ready queue:
+1 task1 1378
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1389
+2 task2 TASK_READY        1373
+
+print ready queue:
+2 task2 1373
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1389
+2 task2 TASK_RUNNING      1383
+
+print ready queue:
+1 task1 1389
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1399
+2 task2 TASK_READY        1383
+
+print ready queue:
+2 task2 1383
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1399
+2 task2 TASK_RUNNING      1394
+
+print ready queue:
+1 task1 1399
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1409
+2 task2 TASK_READY        1394
+
+print ready queue:
+2 task2 1394
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1409
+2 task2 TASK_RUNNING      1405
+
+print ready queue:
+1 task1 1409
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1419
+2 task2 TASK_READY        1405
+
+print ready queue:
+2 task2 1405
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1419
+2 task2 TASK_RUNNING      1416
+
+print ready queue:
+1 task1 1419
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1429
+2 task2 TASK_READY        1416
+
+print ready queue:
+2 task2 1416
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1429
+2 task2 TASK_RUNNING      1426
+
+print ready queue:
+1 task1 1429
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1440
+2 task2 TASK_READY        1426
+
+print ready queue:
+2 task2 1426
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1440
+2 task2 TASK_RUNNING      1436
+
+print ready queue:
+1 task1 1440
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1451
+2 task2 TASK_READY        1436
+
+print ready queue:
+2 task2 1436
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1451
+2 task2 TASK_RUNNING      1446
+
+print ready queue:
+1 task1 1451
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1461
+2 task2 TASK_READY        1446
+
+print ready queue:
+2 task2 1446
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1461
+2 task2 TASK_RUNNING      1457
+
+print ready queue:
+1 task1 1461
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1471
+2 task2 TASK_READY        1457
+
+print ready queue:
+2 task2 1457
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1471
+2 task2 TASK_RUNNING      1468
+
+print ready queue:
+1 task1 1471
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1481
+2 task2 TASK_READY        1468
+
+print ready queue:
+2 task2 1468
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1481
+2 task2 TASK_RUNNING      1479
+
+print ready queue:
+1 task1 1481
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1491
+2 task2 TASK_READY        1479
+
+print ready queue:
+2 task2 1479
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1491
+2 task2 TASK_RUNNING      1490
+
+print ready queue:
+1 task1 1491
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1501
+2 task2 TASK_READY        1490
+
+print ready queue:
+2 task2 1490
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1501
+2 task2 TASK_RUNNING      1501
+
+print ready queue:
+1 task1 1501
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1511
+2 task2 TASK_READY        1501
+
+print ready queue:
+2 task2 1501
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1511
+2 task2 TASK_RUNNING      1512
+
+print ready queue:
+1 task1 1511
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1521
+2 task2 TASK_READY        1512
+
+print ready queue:
+2 task2 1512
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1521
+2 task2 TASK_RUNNING      1523
+
+print ready queue:
+1 task1 1521
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1531
+2 task2 TASK_READY        1523
+
+print ready queue:
+2 task2 1523
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1531
+2 task2 TASK_RUNNING      1534
+
+print ready queue:
+1 task1 1531
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1541
+2 task2 TASK_READY        1534
+
+print ready queue:
+2 task2 1534
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1541
+2 task2 TASK_RUNNING      1545
+
+print ready queue:
+1 task1 1541
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1551
+2 task2 TASK_READY        1545
+
+print ready queue:
+2 task2 1545
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1551
+2 task2 TASK_RUNNING      1555
+
+print ready queue:
+1 task1 1551
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1562
+2 task2 TASK_READY        1555
+
+print ready queue:
+2 task2 1555
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1562
+2 task2 TASK_RUNNING      1565
+
+print ready queue:
+1 task1 1562
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1573
+2 task2 TASK_READY        1565
+
+print ready queue:
+2 task2 1565
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1573
+2 task2 TASK_RUNNING      1575
+
+print ready queue:
+1 task1 1573
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1583
+2 task2 TASK_READY        1575
+
+print ready queue:
+2 task2 1575
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1583
+2 task2 TASK_RUNNING      1586
+
+print ready queue:
+1 task1 1583
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1593
+2 task2 TASK_READY        1586
+
+print ready queue:
+2 task2 1586
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1593
+2 task2 TASK_RUNNING      1597
+
+print ready queue:
+1 task1 1593
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1603
+2 task2 TASK_READY        1597
+
+print ready queue:
+2 task2 1597
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1603
+2 task2 TASK_RUNNING      1608
+
+print ready queue:
+1 task1 1603
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1613
+2 task2 TASK_READY        1608
+
+print ready queue:
+2 task2 1608
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1613
+2 task2 TASK_RUNNING      1619
+
+print ready queue:
+1 task1 1613
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1623
+2 task2 TASK_READY        1619
+
+print ready queue:
+2 task2 1619
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1623
+2 task2 TASK_RUNNING      1629
+
+print ready queue:
+1 task1 1623
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1634
+2 task2 TASK_READY        1629
+
+print ready queue:
+2 task2 1629
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1634
+2 task2 TASK_RUNNING      1639
+
+print ready queue:
+1 task1 1634
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1645
+2 task2 TASK_READY        1639
+
+print ready queue:
+2 task2 1639
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1645
+2 task2 TASK_RUNNING      1649
+
+print ready queue:
+1 task1 1645
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1656
+2 task2 TASK_READY        1649
+
+print ready queue:
+2 task2 1649
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1656
+2 task2 TASK_RUNNING      1659
+
+print ready queue:
+1 task1 1656
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1666
+2 task2 TASK_READY        1659
+
+print ready queue:
+2 task2 1659
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1666
+2 task2 TASK_RUNNING      1670
+
+print ready queue:
+1 task1 1666
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1676
+2 task2 TASK_READY        1670
+
+print ready queue:
+2 task2 1670
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1676
+2 task2 TASK_RUNNING      1681
+
+print ready queue:
+1 task1 1676
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1686
+2 task2 TASK_READY        1681
+
+print ready queue:
+2 task2 1681
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1686
+2 task2 TASK_RUNNING      1692
+
+print ready queue:
+1 task1 1686
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1696
+2 task2 TASK_READY        1692
+
+print ready queue:
+2 task2 1692
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1696
+2 task2 TASK_RUNNING      1703
+
+print ready queue:
+1 task1 1696
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1706
+2 task2 TASK_READY        1703
+
+print ready queue:
+2 task2 1703
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1706
+2 task2 TASK_RUNNING      1714
+
+print ready queue:
+1 task1 1706
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1716
+2 task2 TASK_READY        1714
+
+print ready queue:
+2 task2 1714
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1716
+2 task2 TASK_RUNNING      1724
+
+print ready queue:
+1 task1 1716
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1727
+2 task2 TASK_READY        1724
+
+print ready queue:
+2 task2 1724
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1727
+2 task2 TASK_RUNNING      1734
+
+print ready queue:
+1 task1 1727
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1737
+2 task2 TASK_READY        1734
+
+print ready queue:
+2 task2 1734
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1737
+2 task2 TASK_RUNNING      1745
+
+print ready queue:
+1 task1 1737
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1747
+2 task2 TASK_READY        1745
+
+print ready queue:
+2 task2 1745
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1747
+2 task2 TASK_RUNNING      1755
+
+print ready queue:
+1 task1 1747
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1758
+2 task2 TASK_READY        1755
+
+print ready queue:
+2 task2 1755
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1758
+2 task2 TASK_RUNNING      1765
+
+print ready queue:
+1 task1 1758
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1769
+2 task2 TASK_READY        1765
+
+print ready queue:
+2 task2 1765
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1769
+2 task2 TASK_RUNNING      1775
+
+print ready queue:
+1 task1 1769
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1780
+2 task2 TASK_READY        1775
+
+print ready queue:
+2 task2 1775
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1780
+2 task2 TASK_RUNNING      1785
+
+print ready queue:
+1 task1 1780
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1791
+2 task2 TASK_READY        1785
+
+print ready queue:
+2 task2 1785
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1791
+2 task2 TASK_RUNNING      1796
+
+print ready queue:
+1 task1 1791
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1801
+2 task2 TASK_READY        1796
+
+print ready queue:
+2 task2 1796
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1801
+2 task2 TASK_RUNNING      1807
+
+print ready queue:
+1 task1 1801
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1811
+2 task2 TASK_READY        1807
+
+print ready queue:
+2 task2 1807
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1811
+2 task2 TASK_RUNNING      1818
+
+print ready queue:
+1 task1 1811
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1821
+2 task2 TASK_READY        1818
+
+print ready queue:
+2 task2 1818
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1821
+2 task2 TASK_RUNNING      1829
+
+print ready queue:
+1 task1 1821
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1831
+2 task2 TASK_READY        1829
+
+print ready queue:
+2 task2 1829
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1831
+2 task2 TASK_RUNNING      1840
+
+print ready queue:
+1 task1 1831
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1841
+2 task2 TASK_READY        1840
+
+print ready queue:
+2 task2 1840
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1841
+2 task2 TASK_RUNNING      1851
+
+print ready queue:
+1 task1 1841
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1851
+2 task2 TASK_READY        1851
+
+print ready queue:
+2 task2 1851
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1851
+2 task2 TASK_RUNNING      1862
+
+print ready queue:
+1 task1 1851
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1861
+2 task2 TASK_READY        1862
+
+print ready queue:
+2 task2 1862
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1861
+2 task2 TASK_RUNNING      1873
+
+print ready queue:
+1 task1 1861
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1871
+2 task2 TASK_READY        1873
+
+print ready queue:
+2 task2 1873
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1871
+2 task2 TASK_RUNNING      1884
+
+print ready queue:
+1 task1 1871
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1881
+2 task2 TASK_READY        1884
+
+print ready queue:
+2 task2 1884
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1881
+2 task2 TASK_RUNNING      1895
+
+print ready queue:
+1 task1 1881
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1892
+2 task2 TASK_READY        1895
+
+print ready queue:
+2 task2 1895
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1892
+2 task2 TASK_RUNNING      1905
+
+print ready queue:
+1 task1 1892
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1903
+2 task2 TASK_READY        1905
+
+print ready queue:
+2 task2 1905
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1903
+2 task2 TASK_RUNNING      1915
+
+print ready queue:
+1 task1 1903
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1914
+2 task2 TASK_READY        1915
+
+print ready queue:
+2 task2 1915
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1914
+2 task2 TASK_RUNNING      1925
+
+print ready queue:
+1 task1 1914
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1925
+2 task2 TASK_READY        1925
+
+print ready queue:
+2 task2 1925
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1925
+2 task2 TASK_RUNNING      1935
+
+print ready queue:
+1 task1 1925
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1936
+2 task2 TASK_READY        1935
+
+print ready queue:
+2 task2 1935
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1936
+2 task2 TASK_RUNNING      1945
+
+print ready queue:
+1 task1 1936
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1947
+2 task2 TASK_READY        1945
+
+print ready queue:
+2 task2 1945
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1947
+2 task2 TASK_RUNNING      1955
+
+print ready queue:
+1 task1 1947
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1958
+2 task2 TASK_READY        1955
+
+print ready queue:
+2 task2 1955
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1958
+2 task2 TASK_RUNNING      1965
+
+print ready queue:
+1 task1 1958
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1969
+2 task2 TASK_READY        1965
+
+print ready queue:
+2 task2 1965
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1969
+2 task2 TASK_RUNNING      1975
+
+print ready queue:
+1 task1 1969
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1980
+2 task2 TASK_READY        1975
+
+print ready queue:
+2 task2 1975
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1980
+2 task2 TASK_RUNNING      1986
+
+print ready queue:
+1 task1 1980
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      1990
+2 task2 TASK_READY        1986
+
+print ready queue:
+2 task2 1986
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        1990
+2 task2 TASK_RUNNING      1997
+
+print ready queue:
+1 task1 1990
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2000
+2 task2 TASK_READY        1997
+
+print ready queue:
+2 task2 1997
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2000
+2 task2 TASK_RUNNING      2008
+
+print ready queue:
+1 task1 2000
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2010
+2 task2 TASK_READY        2008
+
+print ready queue:
+2 task2 2008
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2010
+2 task2 TASK_RUNNING      2019
+
+print ready queue:
+1 task1 2010
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2020
+2 task2 TASK_READY        2019
+
+print ready queue:
+2 task2 2019
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2020
+2 task2 TASK_RUNNING      2030
+
+print ready queue:
+1 task1 2020
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2030
+2 task2 TASK_READY        2030
+
+print ready queue:
+2 task2 2030
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2030
+2 task2 TASK_RUNNING      2041
+
+print ready queue:
+1 task1 2030
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2040
+2 task2 TASK_READY        2041
+
+print ready queue:
+2 task2 2041
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2040
+2 task2 TASK_RUNNING      2052
+
+print ready queue:
+1 task1 2040
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2050
+2 task2 TASK_READY        2052
+
+print ready queue:
+2 task2 2052
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2050
+2 task2 TASK_RUNNING      2063
+
+print ready queue:
+1 task1 2050
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2060
+2 task2 TASK_READY        2063
+
+print ready queue:
+2 task2 2063
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2060
+2 task2 TASK_RUNNING      2074
+
+print ready queue:
+1 task1 2060
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2070
+2 task2 TASK_READY        2074
+
+print ready queue:
+2 task2 2074
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2070
+2 task2 TASK_RUNNING      2085
+
+print ready queue:
+1 task1 2070
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2081
+2 task2 TASK_READY        2085
+
+print ready queue:
+2 task2 2085
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2081
+2 task2 TASK_RUNNING      2095
+
+print ready queue:
+1 task1 2081
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2092
+2 task2 TASK_READY        2095
+
+print ready queue:
+2 task2 2095
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2092
+2 task2 TASK_RUNNING      2105
+
+print ready queue:
+1 task1 2092
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2103
+2 task2 TASK_READY        2105
+
+print ready queue:
+2 task2 2105
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2103
+2 task2 TASK_RUNNING      2115
+
+print ready queue:
+1 task1 2103
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2114
+2 task2 TASK_READY        2115
+
+print ready queue:
+2 task2 2115
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2114
+2 task2 TASK_RUNNING      2125
+
+print ready queue:
+1 task1 2114
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2125
+2 task2 TASK_READY        2125
+
+print ready queue:
+2 task2 2125
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2125
+2 task2 TASK_RUNNING      2135
+
+print ready queue:
+1 task1 2125
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2136
+2 task2 TASK_READY        2135
+
+print ready queue:
+2 task2 2135
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2136
+2 task2 TASK_RUNNING      2145
+
+print ready queue:
+1 task1 2136
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2147
+2 task2 TASK_READY        2145
+
+print ready queue:
+2 task2 2145
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2147
+2 task2 TASK_RUNNING      2155
+
+print ready queue:
+1 task1 2147
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2158
+2 task2 TASK_READY        2155
+
+print ready queue:
+2 task2 2155
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2158
+2 task2 TASK_RUNNING      2165
+
+print ready queue:
+1 task1 2158
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2168
+2 task2 TASK_READY        2165
+
+print ready queue:
+2 task2 2165
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2168
+2 task2 TASK_RUNNING      2176
+
+print ready queue:
+1 task1 2168
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2179
+2 task2 TASK_READY        2176
+
+print ready queue:
+2 task2 2176
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2179
+2 task2 TASK_RUNNING      2186
+
+print ready queue:
+1 task1 2179
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2190
+2 task2 TASK_READY        2186
+
+print ready queue:
+2 task2 2186
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2190
+2 task2 TASK_RUNNING      2196
+
+print ready queue:
+1 task1 2190
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2201
+2 task2 TASK_READY        2196
+
+print ready queue:
+2 task2 2196
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2201
+2 task2 TASK_RUNNING      2206
+
+print ready queue:
+1 task1 2201
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2212
+2 task2 TASK_READY        2206
+
+print ready queue:
+2 task2 2206
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2212
+2 task2 TASK_RUNNING      2216
+
+print ready queue:
+1 task1 2212
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2223
+2 task2 TASK_READY        2216
+
+print ready queue:
+2 task2 2216
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2223
+2 task2 TASK_RUNNING      2226
+
+print ready queue:
+1 task1 2223
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2234
+2 task2 TASK_READY        2226
+
+print ready queue:
+2 task2 2226
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2234
+2 task2 TASK_RUNNING      2236
+
+print ready queue:
+1 task1 2234
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2245
+2 task2 TASK_READY        2236
+
+print ready queue:
+2 task2 2236
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2245
+2 task2 TASK_RUNNING      2246
+
+print ready queue:
+1 task1 2245
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2256
+2 task2 TASK_READY        2246
+
+print ready queue:
+2 task2 2246
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2256
+2 task2 TASK_RUNNING      2256
+
+print ready queue:
+1 task1 2256
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2267
+2 task2 TASK_READY        2256
+
+print ready queue:
+2 task2 2256
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2267
+2 task2 TASK_RUNNING      2267
+
+print ready queue:
+1 task1 2267
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2277
+2 task2 TASK_READY        2267
+
+print ready queue:
+2 task2 2267
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2277
+2 task2 TASK_RUNNING      2278
+
+print ready queue:
+1 task1 2277
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2287
+2 task2 TASK_READY        2278
+
+print ready queue:
+2 task2 2278
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2287
+2 task2 TASK_RUNNING      2289
+
+print ready queue:
+1 task1 2287
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2297
+2 task2 TASK_READY        2289
+
+print ready queue:
+2 task2 2289
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2297
+2 task2 TASK_RUNNING      2300
+
+print ready queue:
+1 task1 2297
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2307
+2 task2 TASK_READY        2300
+
+print ready queue:
+2 task2 2300
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2307
+2 task2 TASK_RUNNING      2311
+
+print ready queue:
+1 task1 2307
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2317
+2 task2 TASK_READY        2311
+
+print ready queue:
+2 task2 2311
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2317
+2 task2 TASK_RUNNING      2322
+
+print ready queue:
+1 task1 2317
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2327
+2 task2 TASK_READY        2322
+
+print ready queue:
+2 task2 2322
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2327
+2 task2 TASK_RUNNING      2333
+
+print ready queue:
+1 task1 2327
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2337
+2 task2 TASK_READY        2333
+
+print ready queue:
+2 task2 2333
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2337
+2 task2 TASK_RUNNING      2344
+
+print ready queue:
+1 task1 2337
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2347
+2 task2 TASK_READY        2344
+
+print ready queue:
+2 task2 2344
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2347
+2 task2 TASK_RUNNING      2355
+
+print ready queue:
+1 task1 2347
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2357
+2 task2 TASK_READY        2355
+
+print ready queue:
+2 task2 2355
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2357
+2 task2 TASK_RUNNING      2366
+
+print ready queue:
+1 task1 2357
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2368
+2 task2 TASK_READY        2366
+
+print ready queue:
+2 task2 2366
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2368
+2 task2 TASK_RUNNING      2376
+
+print ready queue:
+1 task1 2368
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2379
+2 task2 TASK_READY        2376
+
+print ready queue:
+2 task2 2376
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2379
+2 task2 TASK_RUNNING      2386
+
+print ready queue:
+1 task1 2379
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2390
+2 task2 TASK_READY        2386
+
+print ready queue:
+2 task2 2386
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2390
+2 task2 TASK_RUNNING      2396
+
+print ready queue:
+1 task1 2390
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2401
+2 task2 TASK_READY        2396
+
+print ready queue:
+2 task2 2396
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2401
+2 task2 TASK_RUNNING      2406
+
+print ready queue:
+1 task1 2401
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2412
+2 task2 TASK_READY        2406
+
+print ready queue:
+2 task2 2406
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2412
+2 task2 TASK_RUNNING      2416
+
+print ready queue:
+1 task1 2412
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2423
+2 task2 TASK_READY        2416
+
+print ready queue:
+2 task2 2416
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2423
+2 task2 TASK_RUNNING      2426
+
+print ready queue:
+1 task1 2423
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2434
+2 task2 TASK_READY        2426
+
+print ready queue:
+2 task2 2426
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2434
+2 task2 TASK_RUNNING      2436
+
+print ready queue:
+1 task1 2434
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2445
+2 task2 TASK_READY        2436
+
+print ready queue:
+2 task2 2436
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2445
+2 task2 TASK_RUNNING      2446
+
+print ready queue:
+1 task1 2445
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2456
+2 task2 TASK_READY        2446
+
+print ready queue:
+2 task2 2446
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2456
+2 task2 TASK_RUNNING      2457
+
+print ready queue:
+1 task1 2456
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2466
+2 task2 TASK_READY        2457
+
+print ready queue:
+2 task2 2457
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2466
+2 task2 TASK_RUNNING      2468
+
+print ready queue:
+1 task1 2466
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2476
+2 task2 TASK_READY        2468
+
+print ready queue:
+2 task2 2468
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2476
+2 task2 TASK_RUNNING      2479
+
+print ready queue:
+1 task1 2476
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2486
+2 task2 TASK_READY        2479
+
+print ready queue:
+2 task2 2479
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2486
+2 task2 TASK_RUNNING      2490
+
+print ready queue:
+1 task1 2486
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2496
+2 task2 TASK_READY        2490
+
+print ready queue:
+2 task2 2490
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2496
+2 task2 TASK_RUNNING      2501
+
+print ready queue:
+1 task1 2496
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2506
+2 task2 TASK_READY        2501
+
+print ready queue:
+2 task2 2501
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2506
+2 task2 TASK_RUNNING      2512
+
+print ready queue:
+1 task1 2506
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2516
+2 task2 TASK_READY        2512
+
+print ready queue:
+2 task2 2512
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2516
+2 task2 TASK_RUNNING      2523
+
+print ready queue:
+1 task1 2516
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2526
+2 task2 TASK_READY        2523
+
+print ready queue:
+2 task2 2523
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2526
+2 task2 TASK_RUNNING      2534
+
+print ready queue:
+1 task1 2526
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2536
+2 task2 TASK_READY        2534
+
+print ready queue:
+2 task2 2534
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2536
+2 task2 TASK_RUNNING      2545
+
+print ready queue:
+1 task1 2536
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2547
+2 task2 TASK_READY        2545
+
+print ready queue:
+2 task2 2545
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2547
+2 task2 TASK_RUNNING      2555
+
+print ready queue:
+1 task1 2547
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2558
+2 task2 TASK_READY        2555
+
+print ready queue:
+2 task2 2555
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2558
+2 task2 TASK_RUNNING      2565
+
+print ready queue:
+1 task1 2558
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2569
+2 task2 TASK_READY        2565
+
+print ready queue:
+2 task2 2565
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2569
+2 task2 TASK_RUNNING      2575
+
+print ready queue:
+1 task1 2569
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2580
+2 task2 TASK_READY        2575
+
+print ready queue:
+2 task2 2575
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2580
+2 task2 TASK_RUNNING      2585
+
+print ready queue:
+1 task1 2580
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2591
+2 task2 TASK_READY        2585
+
+print ready queue:
+2 task2 2585
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2591
+2 task2 TASK_RUNNING      2595
+
+print ready queue:
+1 task1 2591
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2602
+2 task2 TASK_READY        2595
+
+print ready queue:
+2 task2 2595
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2602
+2 task2 TASK_RUNNING      2605
+
+print ready queue:
+1 task1 2602
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2613
+2 task2 TASK_READY        2605
+
+print ready queue:
+2 task2 2605
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2613
+2 task2 TASK_RUNNING      2615
+
+print ready queue:
+1 task1 2613
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2624
+2 task2 TASK_READY        2615
+
+print ready queue:
+2 task2 2615
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2624
+2 task2 TASK_RUNNING      2625
+
+print ready queue:
+1 task1 2624
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2635
+2 task2 TASK_READY        2625
+
+print ready queue:
+2 task2 2625
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2635
+2 task2 TASK_RUNNING      2636
+
+print ready queue:
+1 task1 2635
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2645
+2 task2 TASK_READY        2636
+
+print ready queue:
+2 task2 2636
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2645
+2 task2 TASK_RUNNING      2647
+
+print ready queue:
+1 task1 2645
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2655
+2 task2 TASK_READY        2647
+
+print ready queue:
+2 task2 2647
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2655
+2 task2 TASK_RUNNING      2658
+
+print ready queue:
+1 task1 2655
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2665
+2 task2 TASK_READY        2658
+
+print ready queue:
+2 task2 2658
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2665
+2 task2 TASK_RUNNING      2669
+
+print ready queue:
+1 task1 2665
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2675
+2 task2 TASK_READY        2669
+
+print ready queue:
+2 task2 2669
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2675
+2 task2 TASK_RUNNING      2680
+
+print ready queue:
+1 task1 2675
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2685
+2 task2 TASK_READY        2680
+
+print ready queue:
+2 task2 2680
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2685
+2 task2 TASK_RUNNING      2691
+
+print ready queue:
+1 task1 2685
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2695
+2 task2 TASK_READY        2691
+
+print ready queue:
+2 task2 2691
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2695
+2 task2 TASK_RUNNING      2702
+
+print ready queue:
+1 task1 2695
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2705
+2 task2 TASK_READY        2702
+
+print ready queue:
+2 task2 2702
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2705
+2 task2 TASK_RUNNING      2713
+
+print ready queue:
+1 task1 2705
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2715
+2 task2 TASK_READY        2713
+
+print ready queue:
+2 task2 2713
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2715
+2 task2 TASK_RUNNING      2724
+
+print ready queue:
+1 task1 2715
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2725
+2 task2 TASK_READY        2724
+
+print ready queue:
+2 task2 2724
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2725
+2 task2 TASK_RUNNING      2735
+
+print ready queue:
+1 task1 2725
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2736
+2 task2 TASK_READY        2735
+
+print ready queue:
+2 task2 2735
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2736
+2 task2 TASK_RUNNING      2745
+
+print ready queue:
+1 task1 2736
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2747
+2 task2 TASK_READY        2745
+
+print ready queue:
+2 task2 2745
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2747
+2 task2 TASK_RUNNING      2755
+
+print ready queue:
+1 task1 2747
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2757
+2 task2 TASK_READY        2755
+
+print ready queue:
+2 task2 2755
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2757
+2 task2 TASK_RUNNING      2766
+
+print ready queue:
+1 task1 2757
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2767
+2 task2 TASK_READY        2766
+
+print ready queue:
+2 task2 2766
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2767
+2 task2 TASK_RUNNING      2777
+
+print ready queue:
+1 task1 2767
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2777
+2 task2 TASK_READY        2777
+
+print ready queue:
+2 task2 2777
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2777
+2 task2 TASK_RUNNING      2788
+
+print ready queue:
+1 task1 2777
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2787
+2 task2 TASK_READY        2788
+
+print ready queue:
+2 task2 2788
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2787
+2 task2 TASK_RUNNING      2799
+
+print ready queue:
+1 task1 2787
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2797
+2 task2 TASK_READY        2799
+
+print ready queue:
+2 task2 2799
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2797
+2 task2 TASK_RUNNING      2810
+
+print ready queue:
+1 task1 2797
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2807
+2 task2 TASK_READY        2810
+
+print ready queue:
+2 task2 2810
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2807
+2 task2 TASK_RUNNING      2821
+
+print ready queue:
+1 task1 2807
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2817
+2 task2 TASK_READY        2821
+
+print ready queue:
+2 task2 2821
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2817
+2 task2 TASK_RUNNING      2832
+
+print ready queue:
+1 task1 2817
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2828
+2 task2 TASK_READY        2832
+
+print ready queue:
+2 task2 2832
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2828
+2 task2 TASK_RUNNING      2842
+
+print ready queue:
+1 task1 2828
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2839
+2 task2 TASK_READY        2842
+
+print ready queue:
+2 task2 2842
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2839
+2 task2 TASK_RUNNING      2852
+
+print ready queue:
+1 task1 2839
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2850
+2 task2 TASK_READY        2852
+
+print ready queue:
+2 task2 2852
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2850
+2 task2 TASK_RUNNING      2862
+
+print ready queue:
+1 task1 2850
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2861
+2 task2 TASK_READY        2862
+
+print ready queue:
+2 task2 2862
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2861
+2 task2 TASK_RUNNING      2872
+
+print ready queue:
+1 task1 2861
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2872
+2 task2 TASK_READY        2872
+
+print ready queue:
+2 task2 2872
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2872
+2 task2 TASK_RUNNING      2882
+
+print ready queue:
+1 task1 2872
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2883
+2 task2 TASK_READY        2882
+
+print ready queue:
+2 task2 2882
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2883
+2 task2 TASK_RUNNING      2892
+
+print ready queue:
+1 task1 2883
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2894
+2 task2 TASK_READY        2892
+
+print ready queue:
+2 task2 2892
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2894
+2 task2 TASK_RUNNING      2902
+
+print ready queue:
+1 task1 2894
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2905
+2 task2 TASK_READY        2902
+
+print ready queue:
+2 task2 2902
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2905
+2 task2 TASK_RUNNING      2912
+
+print ready queue:
+1 task1 2905
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2916
+2 task2 TASK_READY        2912
+
+print ready queue:
+2 task2 2912
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2916
+2 task2 TASK_RUNNING      2922
+
+print ready queue:
+1 task1 2916
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2927
+2 task2 TASK_READY        2922
+
+print ready queue:
+2 task2 2922
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2927
+2 task2 TASK_RUNNING      2933
+
+print ready queue:
+1 task1 2927
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2937
+2 task2 TASK_READY        2933
+
+print ready queue:
+2 task2 2933
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2937
+2 task2 TASK_RUNNING      2944
+
+print ready queue:
+1 task1 2937
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2947
+2 task2 TASK_READY        2944
+
+print ready queue:
+2 task2 2944
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2947
+2 task2 TASK_RUNNING      2955
+
+print ready queue:
+1 task1 2947
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2957
+2 task2 TASK_READY        2955
+
+print ready queue:
+2 task2 2955
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2957
+2 task2 TASK_RUNNING      2966
+
+print ready queue:
+1 task1 2957
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2967
+2 task2 TASK_READY        2966
+
+print ready queue:
+2 task2 2966
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2967
+2 task2 TASK_RUNNING      2977
+
+print ready queue:
+1 task1 2967
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2977
+2 task2 TASK_READY        2977
+
+print ready queue:
+2 task2 2977
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2977
+2 task2 TASK_RUNNING      2988
+
+print ready queue:
+1 task1 2977
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2987
+2 task2 TASK_READY        2988
+
+print ready queue:
+2 task2 2988
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2987
+2 task2 TASK_RUNNING      2999
+
+print ready queue:
+1 task1 2987
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      2997
+2 task2 TASK_READY        2999
+
+print ready queue:
+2 task2 2999
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
+set pid 2 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_READY        2997
+2 task2 TASK_RUNNING      3010
+
+print ready queue:
+1 task1 2997
+found pid 2 running
+update waiting time
+pid 2 enqueue ready
+found first ready
+found first ready pid=1
+set timer 10
+pid 1 dequeue ready
+0
+1
+2
+3
+4
+set pid 1 to run
+in timer handler
+swap to simulator
+in simulating
+print all:
+1 task1 TASK_RUNNING      3007
+2 task2 TASK_READY        3010
+
+print ready queue:
+2 task2 3010
+found pid 1 running
+update waiting time
+pid 1 enqueue ready
+found first ready
+found first ready pid=2
+set timer 10
+pid 2 dequeue ready
+0
+1
+2
+3
+4
