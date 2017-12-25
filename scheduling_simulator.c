@@ -1,7 +1,7 @@
 #include "scheduling_simulator.h"
-#define STACK_SIZE 8192
-#define DEBUG
-//#define VERY_DEBUG // =.=
+#define STACK_SIZE 16384
+#define DEMO
+//#define DEBUG // =.=
 #define for_each_node(head, iter, nxt) for(iter = (head)->nxt; iter != head; iter = (iter)->nxt)
 #define my_printf(format, arg) do{\
 									printf(format, arg);\
@@ -34,7 +34,7 @@ void terminate()
 {
 	set_timer(0);
 	if(RUNNING_TASK) {
-#ifdef DEBUG
+#ifdef DEMO
 		my_printf("pid %d terminate\n", RUNNING_TASK->pid);
 #endif
 		RUNNING_TASK->state = TASK_TERMINATED;
@@ -229,9 +229,19 @@ void shell_mode()
 }
 
 
+void print_ready_queue_inverse()
+{
+#ifdef DEBUG
+	my_puts("print ready queue inverse:");
+#endif
+	for(struct node_t* iter = READY_HEAD.prev_ready; iter != &READY_HEAD;
+	    iter = iter->prev_ready)
+		printf("%d %s %d\n", iter->pid, iter->task_name, iter->total_waiting);
+}
+
 void print_ready_queue()
 {
-#ifdef VERY_DEBUG
+#ifdef DEBUG
 	my_puts("print ready queue:");
 #endif
 	for(struct node_t* iter = READY_HEAD.next_ready; iter != &READY_HEAD;
@@ -241,13 +251,13 @@ void print_ready_queue()
 
 void simulating()
 {
-#ifdef VERY_DEBUG
+#ifdef DEBUG
 	my_puts("in simulating");
 #endif
 
 	// if anyone running, set to ready + add waiting queue
 	if(RUNNING_TASK != NULL) {
-#ifdef VERY_DEBUG
+#ifdef DEBUG
 		my_printf("found pid %d running\n", RUNNING_TASK->pid);
 #endif
 		update_all_sleeping(RUNNING_TASK->quantum_time);
@@ -257,7 +267,7 @@ void simulating()
 
 	if(any_ready_task()) {
 		struct node_t *first_ready = READY_HEAD.next_ready;
-#ifdef DEBUG
+#ifdef DEMO
 		my_printf("found first ready pid=%d\n", first_ready->pid);
 #endif
 		// count down
@@ -293,7 +303,7 @@ void simulating()
 
 int set_timer(int msec)
 {
-#ifdef VERY_DEBUG
+#ifdef DEBUG
 	my_printf("set timer %d\n", msec);
 #endif
 	struct itimerval count_down;
@@ -307,16 +317,11 @@ int set_timer(int msec)
 void signal_handler(int sig)
 {
 	if(sig == SIGALRM) {
-#ifdef VERY_DEBUG
-		my_puts("in timer handler");
+#ifdef DEBUG
 		my_puts("swap to simulator");
 #endif
 		assert(swapcontext(&(RUNNING_TASK->context), &SIMULATOR) != -1);
 
-		//	if(running_task != NULL){
-		//		enqueue_ready(running_task);
-		//
-		//	}
 	} else if(sig == SIGTSTP) {
 		set_timer(0);
 		struct node_t* tmp = RUNNING_TASK;
@@ -345,7 +350,7 @@ int set_to_running(struct node_t* task)
 {
 	// calculate waiting time
 	dequeue_ready(task);
-#ifdef DEBUG
+#ifdef DEMO
 	my_printf("set pid %d to run\n", task->pid);
 #endif
 	// set to running
@@ -362,9 +367,10 @@ bool any_ready_task()
 bool any_waiting_task()
 {
 	struct node_t* iter;
-	for_each_node(&LIST_HEAD, iter, next)
-	if(iter->state == TASK_WAITING)
-		return true;
+	for_each_node(&LIST_HEAD, iter, next) {
+		if(iter->state == TASK_WAITING)
+			return true;
+	}
 	return false;
 
 }
@@ -400,8 +406,37 @@ void print_all()
 		tmp = tmp->next;
 	}
 	my_puts("");
+	my_puts("print all inverse:");
+	tmp = LIST_HEAD.prev;
+	printf("pid task name state queueing time sleep\n");
+	while(tmp != &LIST_HEAD) {
+		char state[20];
+		switch(tmp->state) {
+		case TASK_RUNNING:
+			strcpy(state, "TASK_RUNNING");
+			break;
+		case TASK_READY:
+			strcpy(state, "TASK_READY");
+			break;
+		case TASK_WAITING:
+			strcpy(state, "TASK_WAITING");
+			break;
+		case TASK_TERMINATED:
+			strcpy(state, "TASK_TERMINATED");
+			break;
+		default:
+			throw_unexpected("state not found\n");
+
+		}
+		printf("%d %s %-17s %d %d\n", tmp->pid, tmp->task_name, state,
+		       tmp->total_waiting, tmp->sleep_time);
+		tmp = tmp->prev;
+	}
+	my_puts("");
 	print_ready_queue();
 	my_puts("");
+
+	print_ready_queue_inverse();
 }
 
 void hw_suspend(int msec_10)
@@ -489,7 +524,7 @@ int enqueue(char* task_name, int quantum_time)
 
 void enqueue_ready(struct node_t *node)
 {
-#ifdef VERY_DEBUG
+#ifdef DEBUG
 	my_printf("pid %d enqueue ready\n", node->pid);
 #endif
 
@@ -514,7 +549,7 @@ struct node_t* dequeue_ready()
 	struct node_t* tmp = READY_HEAD.next_ready;
 	if(tmp != &READY_HEAD) {
 		// add waiting time
-#ifdef VERY_DEBUG
+#ifdef DEBUG
 		my_printf("pid %d dequeue ready\n", tmp->pid);
 #endif
 		tmp->total_waiting += get_time() - tmp->start_waiting; // TODO calculate
@@ -524,7 +559,7 @@ struct node_t* dequeue_ready()
 		tmp->next_ready = NULL;
 
 	} else {
-#ifdef DEBUG
+#ifdef DEMO
 		my_puts("ready queue empty");
 #endif
 	}
@@ -537,10 +572,16 @@ int remove_task(int pid)
 	while(iter != &LIST_HEAD) {
 		if(iter->pid == pid) {
 			iter->next->prev = iter->prev;
+			my_puts("1");
 			iter->prev->next = iter->next;
-			iter->next_ready->prev_ready = iter->prev_ready;
-			iter->prev_ready->next_ready = iter->next_ready;
-			// TODO free stack
+			my_puts("2");
+			if(iter->state == TASK_READY) {
+				iter->next_ready->prev_ready = iter->prev_ready;
+				my_puts("3");
+				iter->prev_ready->next_ready = iter->next_ready;
+				my_puts("4");
+			}
+			free(iter->context.uc_stack.ss_sp);
 			free(iter);
 			return 0;
 		}
