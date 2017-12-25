@@ -1,7 +1,7 @@
 #include "scheduling_simulator.h"
 #define STACK_SIZE 16384
 #define DEMO
-//#define DEBUG // =.=
+#define DEBUG // =.=
 #define for_each_node(head, iter, nxt) for(iter = (head)->nxt; iter != head; iter = (iter)->nxt)
 #define my_printf(format, arg) do{\
 									printf(format, arg);\
@@ -72,6 +72,7 @@ void update_all_sleeping(int msec)
 	struct node_t *iter;
 	for_each_node(&LIST_HEAD, iter, next) {
 		if(iter->state == TASK_WAITING) {
+			puts("hi");
 			iter->sleep_time -= msec;
 			if(iter->sleep_time <= 0) {
 				iter->total_waiting += -iter->sleep_time;
@@ -251,52 +252,54 @@ void print_ready_queue()
 
 void simulating()
 {
+	while(1) {
 #ifdef DEBUG
-	my_puts("in simulating");
+		my_puts("in simulating");
 #endif
 
-	// if anyone running, set to ready + add waiting queue
-	if(RUNNING_TASK != NULL) {
+		// if anyone running, set to ready + add waiting queue
+		if(RUNNING_TASK != NULL) {
 #ifdef DEBUG
-		my_printf("found pid %d running\n", RUNNING_TASK->pid);
+			my_printf("found pid %d running\n", RUNNING_TASK->pid);
 #endif
-		update_all_sleeping(RUNNING_TASK->quantum_time);
-		enqueue_ready(RUNNING_TASK);
-		RUNNING_TASK = NULL;
-	}
-
-	if(any_ready_task()) {
-		struct node_t *first_ready = READY_HEAD.next_ready;
-#ifdef DEMO
-		my_printf("found first ready pid=%d\n", first_ready->pid);
-#endif
-		// count down
-		if(set_timer(first_ready->quantum_time)) {
-			my_puts("set timer failed");
-			exit(1);
+			update_all_sleeping(RUNNING_TASK->quantum_time);
+			enqueue_ready(RUNNING_TASK);
+			RUNNING_TASK = NULL;
 		}
 
-		// never return if success
-		assert(set_to_running(first_ready) != -1);
-		perror("setcontext failed");
-		exit(1);
+		if(any_ready_task()) {
+			struct node_t *first_ready = READY_HEAD.next_ready;
+#ifdef DEMO
+			my_printf("found first ready pid=%d\n", first_ready->pid);
+#endif
+			// count down
+			if(set_timer(first_ready->quantum_time)) {
+				my_puts("set timer failed");
+				exit(1);
+			}
 
-	} else if(any_waiting_task()) {
-		struct node_t* iter;
-		for_each_node(&LIST_HEAD, iter, next) {
-			if(iter->state == TASK_WAITING) {
-				if((iter->sleep_time-=10) <= 0) {
-					; // TODO hmm...
-					hw_wakeup_ptr(iter);
+			// never return if success
+			assert(set_to_running(first_ready) != -1);
+			perror("setcontext failed");
+			exit(1);
+
+		} else if(any_waiting_task()) {
+			struct node_t* iter;
+			usleep(10000);
+			for_each_node(&LIST_HEAD, iter, next) {
+				if(iter->state == TASK_WAITING) {
+					if((iter->sleep_time-=10) <= 0) {
+						; // TODO hmm...
+						hw_wakeup_ptr(iter);
+					}
+
 				}
 
 			}
-
+			setcontext(&SIMULATOR);
+		} else {
+			shell_mode();
 		}
-		setcontext(&SIMULATOR);
-	} else {
-		shell_mode();
-		setcontext(&SIMULATOR);
 	}
 
 }
@@ -441,11 +444,12 @@ void print_all()
 
 void hw_suspend(int msec_10)
 {
+	set_timer(0);
 	RUNNING_TASK->state = TASK_WAITING;
 	RUNNING_TASK->sleep_time = msec_10 * 10;
 	struct node_t* tmp = RUNNING_TASK;
 	RUNNING_TASK = NULL;
-	swapcontext(&(tmp->context), &SIMULATOR);
+	assert(swapcontext(&(tmp->context), &SIMULATOR) != -1);
 	return;
 }
 

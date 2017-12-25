@@ -9,6 +9,7 @@
 #include <assert.h>
 #include <sys/time.h>
 #include <ucontext.h>
+#include <unistd.h>
 #include <signal.h>
 #include "task.h"
 
