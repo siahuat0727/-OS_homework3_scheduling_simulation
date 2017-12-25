@@ -12,6 +12,7 @@
 							fflush(stdout);\
 						}while(0)
 
+
 int main()
 {
 	signal_init();
@@ -72,7 +73,6 @@ void update_all_sleeping(int msec)
 	struct node_t *iter;
 	for_each_node(&LIST_HEAD, iter, next) {
 		if(iter->state == TASK_WAITING) {
-			puts("hi");
 			iter->sleep_time -= msec;
 			if(iter->sleep_time <= 0) {
 				iter->total_waiting += -iter->sleep_time;
@@ -375,9 +375,7 @@ bool any_waiting_task()
 			return true;
 	}
 	return false;
-
 }
-
 
 void print_all()
 {
