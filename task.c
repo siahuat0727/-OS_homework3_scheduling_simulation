@@ -27,6 +27,9 @@ void task2(void) // run infinite
 
 void task3(void) // wait infinite
 {
+#ifdef DEBUG
+	puts("I'm task3");
+#endif
 	hw_suspend(32768);
 	fprintf(stdout, "task3: good morning~\n");
 	fflush(stdout);
@@ -34,6 +37,9 @@ void task3(void) // wait infinite
 
 void task4(void) // sleep 5s
 {
+#ifdef DEBUG
+	puts("I'm task4");
+#endif
 	hw_suspend(500);
 	fprintf(stdout, "task4: good morning~\n");
 	fflush(stdout);
@@ -41,6 +47,9 @@ void task4(void) // sleep 5s
 
 void task5(void)
 {
+#ifdef DEBUG
+	puts("I'm task5");
+#endif
 	int pid = hw_task_create("task3");
 
 	hw_suspend(1000);
@@ -54,6 +63,9 @@ void task5(void)
 
 void task6(void)
 {
+#ifdef DEBUG
+	puts("I'm task6");
+#endif
 	for (int num = 0; num < 5; ++num) {
 		hw_task_create("task3");
 	}
