@@ -2,6 +2,14 @@
 #define STACK_SIZE 8192
 #define DEBUG
 #define for_each_node(head, iter, nxt) for(iter = (head)->nxt; iter != head; iter = (iter)->nxt)
+#define my_printf(format, arg) do{\
+									printf(format, arg);\
+									fflush(stdout);\
+								}while(0)
+#define my_puts(str) 	do{\
+							puts(str);\
+							fflush(stdout);\
+						}while(0)
 
 int main()
 {
@@ -13,7 +21,7 @@ int main()
 	assert(getcontext(&SIMULATOR) != -1);
 	simulating();
 
-	puts("main terminate");
+	my_puts("main terminate");
 	return 0;
 }
 
@@ -82,7 +90,7 @@ void shell_mode()
 			char option[20];
 			if(my_sscanf(&buf_ptr, option)) {
 				if(strcmp(option, "-t")) {
-					printf("%s: option not found\n", option);
+					my_printf("%s: option not found\n", option);
 					continue;
 				}
 				char argument[20];
@@ -92,14 +100,14 @@ void shell_mode()
 				else if(!strcmp(argument, "L"))
 					quantum_time = 20;
 				else {
-					printf("%s: invalid argument\n", argument);
+					my_printf("%s: invalid argument\n", argument);
 					continue;
 				}
 			}
 
 			int ret_val = enqueue(task_name, quantum_time);
 			if(ret_val == -1) {
-				printf("%s: task not found\n", task_name);
+				my_printf("%s: task not found\n", task_name);
 				continue;
 			}
 
@@ -111,9 +119,9 @@ void shell_mode()
 				more_char = true;
 			if(!more_char && n == 1) {
 				if(remove_task(pid) < 0)
-					printf("pid %d does not exist\n", pid);
+					my_printf("pid %d does not exist\n", pid);
 			} else {
-				puts("Invalid parameter for remove");
+				my_puts("Invalid parameter for remove");
 				continue;
 			}
 
@@ -123,7 +131,7 @@ void shell_mode()
 			update_waiting_time();
 			break; // TODO check if any other input
 		} else {
-			printf("%s: command not found\n", command);
+			my_printf("%s: command not found\n", command);
 			continue;
 		}
 	}
@@ -132,7 +140,7 @@ void shell_mode()
 
 void print_ready_queue()
 {
-	puts("print ready queue:");
+	my_puts("print ready queue:");
 	for(struct node_t* iter = READY_HEAD.next_ready; iter != &READY_HEAD;
 	    iter = iter->next_ready)
 		printf("%d %s %d\n", iter->pid, iter->task_name, iter->total_waiting);
@@ -141,15 +149,15 @@ void print_ready_queue()
 // running
 void simulating()
 {
-	puts("in simulating");
+	my_puts("in simulating");
 
 	// if anyone running, set to ready + add waiting queue
 	if(RUNNING_TASK != NULL) {
 #ifdef DEBUG
-		printf("found pid %d running\n", RUNNING_TASK->pid);
+		my_printf("found pid %d running\n", RUNNING_TASK->pid);
 #endif
 		struct node_t *iter;
-		puts("update waiting time");
+		my_puts("update waiting time");
 		for_each_node(&LIST_HEAD, iter, next) {
 			if(iter->state == TASK_WAITING)
 				iter->sleep_time -= RUNNING_TASK->quantum_time;
@@ -165,11 +173,11 @@ void simulating()
 	if(any_ready_task()) {
 		struct node_t *first_ready = READY_HEAD.next_ready;
 #ifdef DEBUG
-		printf("found first ready pid=%d\n", first_ready->pid);
+		my_printf("found first ready pid=%d\n", first_ready->pid);
 #endif
 		// count down
 		if(set_timer(first_ready->quantum_time)) {
-			puts("set timer failed");
+			my_puts("set timer failed");
 			exit(1);
 		}
 
@@ -179,14 +187,14 @@ void simulating()
 		exit(1);
 
 	} else {
-		puts("no ready task");
+		my_puts("no ready task");
 	}
 
 }
 
 int set_timer(int msec)
 {
-	printf("set timer %d\n", msec);
+	my_printf("set timer %d\n", msec);
 	struct itimerval count_down;
 	count_down.it_value.tv_sec = 0;
 	count_down.it_value.tv_usec = msec * 1000;
@@ -198,8 +206,8 @@ int set_timer(int msec)
 void signal_handler(int sig)
 {
 	if(sig == SIGALRM) {
-		puts("in timer handler");
-		puts("swap to simulator");
+		my_puts("in timer handler");
+		my_puts("swap to simulator");
 		assert(swapcontext(&(RUNNING_TASK->context), &SIMULATOR) != -1);
 
 		//	if(running_task != NULL){
@@ -208,7 +216,7 @@ void signal_handler(int sig)
 		//	}
 	} else if(sig == SIGTSTP) {
 		set_timer(0);
-		puts("in ctrl z handler");
+		my_puts("in ctrl z handler");
 		struct node_t* tmp = RUNNING_TASK;
 		RUNNING_TASK = NULL;
 		print_ready_queue();
@@ -239,7 +247,7 @@ int set_to_running(struct node_t* task)
 	// calculate waiting time
 	dequeue_ready(task);
 #ifdef DEBUG
-	printf("set pid %d to run\n", task->pid);
+	my_printf("set pid %d to run\n", task->pid);
 #endif
 	// set to running
 	task->state = TASK_RUNNING;
@@ -255,8 +263,8 @@ bool any_ready_task()
 
 void print_all()
 {
-	puts("");
-	puts("print all:");
+	my_puts("");
+	my_puts("print all:");
 	struct node_t* tmp = LIST_HEAD.next;
 	while(tmp != &LIST_HEAD) {
 		char state[20];
@@ -277,12 +285,13 @@ void print_all()
 			throw_unexpected("state not found\n");
 
 		}
-		printf("%d %s %-17s %d\n", tmp->pid, tmp->task_name, state, tmp->total_waiting);
+		printf("%d %s %-17s %d\n", tmp->pid, tmp->task_name, state,
+		       tmp->total_waiting);
 		tmp = tmp->next;
 	}
-	puts("");
+	my_puts("");
 	print_ready_queue();
-	puts("");
+	my_puts("");
 }
 
 void hw_suspend(int msec_10)
@@ -367,7 +376,7 @@ int enqueue(char* task_name, int quantum_time)
 void enqueue_ready(struct node_t *node)
 {
 #ifdef DEBUG
-	printf("pid %d enqueue ready\n", node->pid);
+	my_printf("pid %d enqueue ready\n", node->pid);
 #endif
 
 	node->state = TASK_READY;
@@ -392,7 +401,7 @@ struct node_t* dequeue_ready()
 	if(tmp != &READY_HEAD) {
 		// add waiting time
 #ifdef DEBUG
-		printf("pid %d dequeue ready\n", tmp->pid);
+		my_printf("pid %d dequeue ready\n", tmp->pid);
 #endif
 		tmp->total_waiting += get_time() - tmp->start_waiting; // TODO calculate
 		tmp->prev_ready->next_ready = tmp->next_ready;
@@ -401,7 +410,7 @@ struct node_t* dequeue_ready()
 		tmp->next_ready = NULL;
 
 	} else {
-		puts("ready queue empty");
+		my_puts("ready queue empty");
 	}
 	return tmp;
 }
