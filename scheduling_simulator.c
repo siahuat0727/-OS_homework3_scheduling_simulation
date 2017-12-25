@@ -5,15 +5,7 @@
 
 int main()
 {
-	signal(SIGTSTP, signal_handler);
-	signal(SIGALRM, signal_handler);
-
-//	int i = 0;
-//	while(1){
-//		int delay = 50000000;
-//		while(delay--);
-//		printf("while in main %d\n", ++i);
-//	}
+	signal_init();
 	list_init();
 	tasks_init();
 
@@ -31,6 +23,18 @@ void update_waiting_time()
 	for_each_node(&READY_HEAD, iter, next_ready) {
 		iter->start_waiting = get_time();
 	}
+}
+
+void signal_init()
+{
+	struct sigaction stp;
+	stp.sa_handler = &signal_handler;
+	sigemptyset(&stp.sa_mask);
+	sigaddset(&stp.sa_mask, SIGALRM);
+	sigaddset(&stp.sa_mask, SIGTSTP);
+	stp.sa_flags = 0;
+	assert(sigaction(SIGALRM, &stp, NULL) == 0);
+	assert(sigaction(SIGTSTP, &stp, NULL) == 0);
 }
 
 void list_init()
@@ -197,6 +201,7 @@ void signal_handler(int sig)
 		puts("in timer handler");
 		puts("swap to simulator");
 		assert(swapcontext(&(RUNNING_TASK->context), &SIMULATOR) != -1);
+
 		//	if(running_task != NULL){
 		//		enqueue_ready(running_task);
 		//

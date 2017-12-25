@@ -63,6 +63,7 @@ struct node_t* dequeue_ready();
 
 void shell_mode();
 void signal_handler(int sig);
+void signal_init();
 void tasks_init();
 void list_init();
 void print_all();
