@@ -66,17 +66,15 @@ void update_start_waiting();
 void update_total_waiting();
 void update_all_start_waiting();
 void update_all_total_waiting();
-void update_all_sleep();
+void update_all_sleeping();
 
 // about timer
 int set_timer(int msec);
 unsigned int get_time();
 
-int set_to_running(struct node_t* task);
+int swap_to_running(struct node_t* task);
 bool any_ready_task();
 bool any_waiting_task();
-void terminate();
-void simulating();
 
 // about linked list
 int enqueue(char* task, int quantum_time);
@@ -84,7 +82,10 @@ int remove_task();
 void enqueue_ready(struct node_t *node);
 struct node_t* dequeue_ready();
 
-void shell_mode();
+void shell_main();
+void scheduler_main();
+void terminate_main();
+
 void signal_handler(int sig);
 void signal_ignore(int sig);
 
@@ -96,13 +97,15 @@ void list_init();
 // print
 void print_all();
 void print_ready_queue();
+bool my_sscanf(char **buf, char* str);
+
 
 // error
 void throw_unexpected(const char *err_msg);
 void invalid(const char* err_input, const char* type);
 
-ucontext_t SCHEDULER;
-ucontext_t TERMINATE;
+ucontext_t MAIN, SHELL, SCHEDULER, TERMINATE;
+ucontext_t *cur_ucontext;
 struct node_t* RUNNING_TASK;
 
 #endif

@@ -1,122 +1,50 @@
 #include "scheduling_simulator.h"
-#define STACK_SIZE 16384
+#define STACK_SIZE 8192
 #define DEMO
 //#define DEBUG
 #define for_each_node(head, iter, nxt) for(iter = (head)->nxt; iter != head; iter = (iter)->nxt)
 
 int main()
 {
-	list_init();
-	tasks_init();
-
-	shell_mode();
-
-	signal_work(true);
-	assert(getcontext(&TERMINATE) != -1);
-	terminate(); //set to TERMINATE when any task return
+	assert(getcontext(&SHELL) != -1);
+	SHELL.uc_stack.ss_sp = malloc(STACK_SIZE);
+	SHELL.uc_stack.ss_size = STACK_SIZE;
+	SHELL.uc_stack.ss_flags = 0;
+	SHELL.uc_link = &MAIN;
+	makecontext(&SHELL, shell_main, 0);
 
 	assert(getcontext(&SCHEDULER) != -1);
-	simulating();
+	SCHEDULER.uc_stack.ss_sp = malloc(STACK_SIZE);
+	SCHEDULER.uc_stack.ss_size = STACK_SIZE;
+	SCHEDULER.uc_stack.ss_flags = 0;
+	SCHEDULER.uc_link = &MAIN;
+	makecontext(&SCHEDULER, scheduler_main, 0);
+
+	assert(getcontext(&TERMINATE) != -1);
+	TERMINATE.uc_stack.ss_sp = malloc(STACK_SIZE);
+	TERMINATE.uc_stack.ss_size = STACK_SIZE;
+	TERMINATE.uc_stack.ss_flags = 0;
+	TERMINATE.uc_link = &MAIN;
+	makecontext(&TERMINATE, terminate_main, 0);
+
+	getcontext(&MAIN);
+
+	list_init();
+	tasks_init();
+	signal_work(true);
+
+	assert(swapcontext(&MAIN, &SHELL) != -1);
 
 	my_puts("main terminate");
 	return 0;
 }
 
-void terminate()
-{
-	assert(set_timer(0) == 0);
-	if(RUNNING_TASK) {
-#ifdef DEMO
-		my_printf("pid %d terminate\n", RUNNING_TASK->pid);
-#endif
-		RUNNING_TASK->state = TASK_TERMINATED;
-		RUNNING_TASK = NULL;
-	}
-}
-
-void update_total_waiting(struct node_t* node)
-{
-	node->total_waiting += get_time() - node->start_waiting;
-}
-
-void update_all_total_waiting()
-{
-	struct node_t* iter;
-	for_each_node(&READY_HEAD, iter, next_ready) {
-		update_total_waiting(iter);
-	}
-}
-
-void update_start_waiting(struct node_t* node)
-{
-	node->start_waiting = get_time();
-}
-
-void update_all_start_waiting()
-{
-	struct node_t* iter;
-	for_each_node(&READY_HEAD, iter, next_ready) {
-		update_start_waiting(iter);
-	}
-}
-void update_all_sleeping(int msec)
-{
-	struct node_t *iter;
-	for_each_node(&LIST_HEAD, iter, next) {
-		if(iter->state == TASK_WAITING) {
-			iter->sleep_time -= msec;
-			if(iter->sleep_time <= 0) {
-				iter->total_waiting += -iter->sleep_time;
-				hw_wakeup_ptr(iter);
-			}
-		}
-	}
-}
-
-void signal_work(bool work)
-{
-	struct sigaction stp;
-	if(work)
-		stp.sa_handler = &signal_handler;
-	else
-		stp.sa_handler = &signal_ignore;
-	sigemptyset(&stp.sa_mask);
-	sigaddset(&stp.sa_mask, SIGALRM);
-	sigaddset(&stp.sa_mask, SIGTSTP);
-	stp.sa_flags = 0;
-	assert(sigaction(SIGALRM, &stp, NULL) == 0);
-	assert(sigaction(SIGTSTP, &stp, NULL) == 0);
-}
-
-void list_init()
-{
-	LIST_HEAD.prev = &LIST_HEAD;
-	LIST_HEAD.next = &LIST_HEAD;
-	READY_HEAD.prev_ready = &READY_HEAD;
-	READY_HEAD.next_ready = &READY_HEAD;
-}
-
-void tasks_init()
-{
-	func tasks_default[6] = {task1, task2, task3, task4, task5, task6};
-	memcpy(TASKS, tasks_default, sizeof(tasks_default));
-}
-
-bool my_sscanf(char** buf, char* dest)
-{
-	if(sscanf(*buf, "%s", dest) < 0)
-		return false;
-	*buf += strlen(dest);
-	while(**buf == ' ')
-		++*buf;
-	return true;
-}
-
-void shell_mode()
+void shell_main()
 {
 	while(1) {
-		printf("$ ");
+		cur_ucontext = &SHELL;
 
+		printf("$ ");
 		// getline
 		char buf[200];
 		fgets(buf, sizeof(buf), stdin);
@@ -216,13 +144,152 @@ void shell_mode()
 			}
 
 			update_all_start_waiting();
-			break;
+			swapcontext(&SHELL, &SCHEDULER);
 		} else {
 			my_printf("%s: command not found\n", command);
 			continue;
 		}
 	}
 }
+
+void scheduler_main()
+{
+	while(1) {
+		cur_ucontext = &SCHEDULER;
+
+		// if anyone running, set to ready + add waiting queue
+		if(RUNNING_TASK != NULL) {
+#ifdef DEBUG
+			my_printf("found pid %d running\n", RUNNING_TASK->pid);
+#endif
+			update_all_sleeping(RUNNING_TASK->quantum_time);
+			enqueue_ready(RUNNING_TASK);
+			RUNNING_TASK = NULL;
+		}
+
+		if(any_ready_task()) {
+			struct node_t *first_ready = READY_HEAD.next_ready;
+
+			// count down
+			assert(set_timer(first_ready->quantum_time) == 0);
+
+			// never return if success
+			assert(swap_to_running(first_ready) != -1);
+
+		} else if(any_waiting_task()) {
+			const int sleep_msec = 10;
+			usleep(1000 * sleep_msec);
+			struct node_t* iter;
+			for_each_node(&LIST_HEAD, iter, next) {
+				if(iter->state == TASK_WAITING) {
+					if((iter->sleep_time-=sleep_msec) <= 0) {
+						; // TODO hmm...
+						hw_wakeup_ptr(iter);
+					}
+
+				}
+
+			}
+		} else {
+			assert(swapcontext(&SCHEDULER, &SHELL) != -1);
+		}
+	}
+
+}
+
+void terminate_main()
+{
+	while(1) {
+		cur_ucontext = &TERMINATE;
+		assert(set_timer(0) == 0);
+		assert(RUNNING_TASK != NULL);
+#ifdef DEMO
+		my_printf("pid %d terminate\n", RUNNING_TASK->pid);
+#endif
+		RUNNING_TASK->state = TASK_TERMINATED;
+		RUNNING_TASK = NULL;
+		swapcontext(&TERMINATE, &SCHEDULER);
+	}
+}
+
+void update_total_waiting(struct node_t* node)
+{
+	node->total_waiting += get_time() - node->start_waiting;
+}
+
+void update_all_total_waiting()
+{
+	struct node_t* iter;
+	for_each_node(&READY_HEAD, iter, next_ready) {
+		update_total_waiting(iter);
+	}
+}
+
+void update_start_waiting(struct node_t* node)
+{
+	node->start_waiting = get_time();
+}
+
+void update_all_start_waiting()
+{
+	struct node_t* iter;
+	for_each_node(&READY_HEAD, iter, next_ready) {
+		update_start_waiting(iter);
+	}
+}
+void update_all_sleeping(int msec)
+{
+	struct node_t *iter;
+	for_each_node(&LIST_HEAD, iter, next) {
+		if(iter->state == TASK_WAITING) {
+			iter->sleep_time -= msec;
+			if(iter->sleep_time <= 0) {
+				iter->total_waiting += -iter->sleep_time;
+				hw_wakeup_ptr(iter);
+			}
+		}
+	}
+}
+
+void signal_work(bool work)
+{
+	struct sigaction stp;
+	if(work)
+		stp.sa_handler = &signal_handler;
+	else
+		stp.sa_handler = &signal_ignore;
+	sigemptyset(&stp.sa_mask);
+	sigaddset(&stp.sa_mask, SIGALRM);
+	sigaddset(&stp.sa_mask, SIGTSTP);
+	stp.sa_flags = 0;
+	assert(sigaction(SIGALRM, &stp, NULL) == 0);
+	assert(sigaction(SIGTSTP, &stp, NULL) == 0);
+}
+
+void list_init()
+{
+	LIST_HEAD.prev = &LIST_HEAD;
+	LIST_HEAD.next = &LIST_HEAD;
+	READY_HEAD.prev_ready = &READY_HEAD;
+	READY_HEAD.next_ready = &READY_HEAD;
+}
+
+void tasks_init()
+{
+	func tasks_default[6] = {task1, task2, task3, task4, task5, task6};
+	memcpy(TASKS, tasks_default, sizeof(tasks_default));
+}
+
+bool my_sscanf(char** buf, char* dest)
+{
+	if(sscanf(*buf, "%s", dest) < 0)
+		return false;
+	*buf += strlen(dest);
+	while(**buf == ' ')
+		++*buf;
+	return true;
+}
+
 
 
 void print_ready_queue_inverse()
@@ -245,56 +312,8 @@ void print_ready_queue()
 		printf("%d %s %d\n", iter->pid, iter->task_name, iter->total_waiting);
 }
 
-void simulating()
-{
-	while(1) {
-
-		// if anyone running, set to ready + add waiting queue
-		if(RUNNING_TASK != NULL) {
-#ifdef DEBUG
-			my_printf("found pid %d running\n", RUNNING_TASK->pid);
-#endif
-			update_all_sleeping(RUNNING_TASK->quantum_time);
-			enqueue_ready(RUNNING_TASK);
-			RUNNING_TASK = NULL;
-		}
-
-		if(any_ready_task()) {
-			struct node_t *first_ready = READY_HEAD.next_ready;
-
-			// count down
-			assert(set_timer(first_ready->quantum_time) == 0);
-
-			// never return if success
-			assert(set_to_running(first_ready) != -1);
-
-		} else if(any_waiting_task()) {
-			const int sleep_msec = 10;
-			usleep(1000 * sleep_msec);
-			struct node_t* iter;
-			for_each_node(&LIST_HEAD, iter, next) {
-				if(iter->state == TASK_WAITING) {
-					if((iter->sleep_time-=sleep_msec) <= 0) {
-						; // TODO hmm...
-						hw_wakeup_ptr(iter);
-					}
-
-				}
-
-			}
-			//		assert(setcontext(&SCHEDULER) != -1);
-		} else {
-			shell_mode();
-		}
-	}
-
-}
-
 int set_timer(int msec)
 {
-#ifdef DEBUG
-	my_printf("set timer %d\n", msec);
-#endif
 	struct itimerval count_down;
 	count_down.it_value.tv_sec = 0;
 	count_down.it_value.tv_usec = msec * 1000;
@@ -318,10 +337,7 @@ void signal_handler(int sig)
 		if(tmp)
 			enqueue_ready(tmp);
 
-		shell_mode();
-		if(tmp) // save current task and goto scheduler
-			assert(swapcontext(&(tmp->context), &SCHEDULER) != -1);
-
+		assert(swapcontext(cur_ucontext, &SHELL) != -1);
 	} else {
 		throw_unexpected("unexpected signal");
 	}
@@ -338,7 +354,7 @@ unsigned int get_time()
 	return tv.tv_sec*1000 + tv.tv_usec/1000;
 }
 
-int set_to_running(struct node_t* task)
+int swap_to_running(struct node_t* task)
 {
 	// calculate waiting time
 	dequeue_ready(task);
@@ -348,7 +364,8 @@ int set_to_running(struct node_t* task)
 	// set to running
 	task->state = TASK_RUNNING;
 	RUNNING_TASK = task;
-	return setcontext(&(task->context));
+	cur_ucontext = &(RUNNING_TASK->context);
+	return swapcontext(&SCHEDULER, &(task->context));
 }
 
 bool any_ready_task()
