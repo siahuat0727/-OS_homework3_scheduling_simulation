@@ -55,13 +55,23 @@ struct node_t {
 
 struct node_t LIST_HEAD, READY_HEAD;
 
+// sub main
+void shell_main();
+void scheduler_main();
+void terminate_main();
+
+// init
+void signal_init();
+void tasks_init();
+void list_init();
+
 void hw_suspend(int msec_10);
 void hw_wakeup_pid(int pid);
 void hw_wakeup_ptr(struct node_t* node);
 int hw_wakeup_taskname(char *task_name);
 int hw_task_create(char *task_name);
 
-// about queueing time
+// about queueing and sleeping time
 void update_start_waiting();
 void update_total_waiting();
 void update_all_start_waiting();
@@ -82,17 +92,8 @@ int remove_task();
 void enqueue_ready(struct node_t *node);
 struct node_t* dequeue_ready();
 
-void shell_main();
-void scheduler_main();
-void terminate_main();
-
 void signal_handler(int sig);
 void signal_ignore(int sig);
-
-// init
-void signal_init();
-void tasks_init();
-void list_init();
 
 // print
 void print_all();
@@ -105,7 +106,7 @@ void throw_unexpected(const char *err_msg);
 void invalid(const char* err_input, const char* type);
 
 ucontext_t MAIN, SHELL, SCHEDULER, TERMINATE;
-ucontext_t *cur_ucontext;
+ucontext_t *CUR_UCONTEXT;
 struct node_t* RUNNING_TASK;
 
 #endif
