@@ -10,7 +10,6 @@ void task1(void)   // may terminated
 	unsigned int a = ~0;
 
 	while (a != 0) {
-		my_printf("%10d\n", a);
 		a -= 1;
 	}
 }

@@ -1,6 +1,6 @@
 #include "scheduling_simulator.h"
 #define STACK_SIZE 8192
-#define DEMO
+//#define DEMO
 //#define DEBUG
 #define for_each_node(head, iter, nxt) for(iter = (head)->nxt; iter != head; iter = (iter)->nxt)
 
@@ -31,7 +31,7 @@ int main()
 
 	list_init();
 	tasks_init();
-	signal_work(true);
+	signal_init();
 
 	assert(swapcontext(&MAIN, &SHELL) != -1);
 
@@ -251,13 +251,10 @@ void update_all_sleeping(int msec)
 	}
 }
 
-void signal_work(bool work)
+void signal_init()
 {
 	struct sigaction stp;
-	if(work)
-		stp.sa_handler = &signal_handler;
-	else
-		stp.sa_handler = &signal_ignore;
+	stp.sa_handler = &signal_handler;
 	sigemptyset(&stp.sa_mask);
 	sigaddset(&stp.sa_mask, SIGALRM);
 	sigaddset(&stp.sa_mask, SIGTSTP);
@@ -289,8 +286,6 @@ bool my_sscanf(char** buf, char* dest)
 		++*buf;
 	return true;
 }
-
-
 
 void print_ready_queue_inverse()
 {
@@ -329,22 +324,16 @@ void signal_handler(int sig)
 		my_puts("swap to simulator");
 #endif
 		assert(swapcontext(&(RUNNING_TASK->context), &SCHEDULER) != -1);
-
 	} else if(sig == SIGTSTP) {
 		set_timer(0);
 		struct node_t* tmp = RUNNING_TASK;
 		RUNNING_TASK = NULL;
 		if(tmp)
 			enqueue_ready(tmp);
-
 		assert(swapcontext(cur_ucontext, &SHELL) != -1);
 	} else {
 		throw_unexpected("unexpected signal");
 	}
-}
-
-void signal_ignore(int sig)
-{
 }
 
 unsigned int get_time()
@@ -413,37 +402,9 @@ void print_all()
 		tmp = tmp->next;
 	}
 	my_puts("");
-//	my_puts("print all inverse:");
-//	tmp = LIST_HEAD.prev;
-//	printf("pid task name state queueing time sleep\n");
-//	while(tmp != &LIST_HEAD) {
-//		char state[20];
-//		switch(tmp->state) {
-//		case TASK_RUNNING:
-//			strcpy(state, "TASK_RUNNING");
-//			break;
-//		case TASK_READY:
-//			strcpy(state, "TASK_READY");
-//			break;
-//		case TASK_WAITING:
-//			strcpy(state, "TASK_WAITING");
-//			break;
-//		case TASK_TERMINATED:
-//			strcpy(state, "TASK_TERMINATED");
-//			break;
-//		default:
-//			throw_unexpected("state not found\n");
-//
-//		}
-//		printf("%d %s %-17s %d %d\n", tmp->pid, tmp->task_name, state,
-//		       tmp->total_waiting, tmp->sleep_time);
-//		tmp = tmp->prev;
-//	}
-//	my_puts("");
 	print_ready_queue();
 	my_puts("");
 
-//	print_ready_queue_inverse();
 }
 
 void hw_suspend(int msec_10)
@@ -521,13 +482,11 @@ int enqueue(char* task_name, int quantum_time)
 	makecontext(&(node->context), TASKS[task_num_c - '1'], 0);
 
 	// push back to LIST
-	signal_work(false);
 	struct node_t *list_prev = LIST_HEAD.prev;
 	LIST_HEAD.prev = node;
 	list_prev->next = node;
 	node->next = &LIST_HEAD;
 	node->prev = list_prev;
-	signal_work(true);
 
 	// insert into ready queue
 	enqueue_ready(node);

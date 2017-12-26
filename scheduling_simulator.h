@@ -90,7 +90,7 @@ void signal_handler(int sig);
 void signal_ignore(int sig);
 
 // init
-void signal_work(bool work);
+void signal_init();
 void tasks_init();
 void list_init();
 
