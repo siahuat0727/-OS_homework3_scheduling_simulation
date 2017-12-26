@@ -4,12 +4,13 @@
 void task1(void)   // may terminated
 {
 #ifdef DEBUG
-	puts("I'm task1");
+	my_puts("I'm task1");
 #endif
 
 	unsigned int a = ~0;
 
 	while (a != 0) {
+		my_printf("%10d\n", a);
 		a -= 1;
 	}
 }
@@ -17,7 +18,7 @@ void task1(void)   // may terminated
 void task2(void) // run infinite
 {
 #ifdef DEBUG
-	puts("I'm task2");
+	my_puts("I'm task2");
 #endif
 
 	unsigned int a = 0;
@@ -30,7 +31,7 @@ void task2(void) // run infinite
 void task3(void) // wait infinite
 {
 #ifdef DEBUG
-	printf("pid %d I'm task3\n", RUNNING_TASK->pid);
+	my_printf("pid %d I'm task3\n", RUNNING_TASK->pid);
 #endif
 
 	hw_suspend(32768);
@@ -45,7 +46,7 @@ void task3(void) // wait infinite
 void task4(void) // sleep 5s
 {
 #ifdef DEBUG
-	puts("I'm task4");
+	my_puts("I'm task4");
 #endif
 
 	hw_suspend(500);
@@ -56,7 +57,7 @@ void task4(void) // sleep 5s
 void task5(void)
 {
 #ifdef DEBUG
-	puts("I'm task5");
+	my_puts("I'm task5");
 #endif
 
 	int pid = hw_task_create("task3");
@@ -73,7 +74,7 @@ void task5(void)
 void task6(void)
 {
 #ifdef DEBUG
-	puts("I'm task6");
+	my_puts("I'm task6");
 #endif
 	for (int num = 0; num < 5; ++num) {
 		hw_task_create("task3");

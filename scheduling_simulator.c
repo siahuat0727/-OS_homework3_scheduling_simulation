@@ -3,14 +3,6 @@
 #define DEMO
 //#define DEBUG
 #define for_each_node(head, iter, nxt) for(iter = (head)->nxt; iter != head; iter = (iter)->nxt)
-#define my_printf(format, arg) do{\
-									printf(format, arg);\
-									fflush(stdout);\
-								}while(0)
-#define my_puts(str) 	do{\
-							puts(str);\
-							fflush(stdout);\
-						}while(0)
 
 int main()
 {
@@ -404,37 +396,37 @@ void print_all()
 		tmp = tmp->next;
 	}
 	my_puts("");
-	my_puts("print all inverse:");
-	tmp = LIST_HEAD.prev;
-	printf("pid task name state queueing time sleep\n");
-	while(tmp != &LIST_HEAD) {
-		char state[20];
-		switch(tmp->state) {
-		case TASK_RUNNING:
-			strcpy(state, "TASK_RUNNING");
-			break;
-		case TASK_READY:
-			strcpy(state, "TASK_READY");
-			break;
-		case TASK_WAITING:
-			strcpy(state, "TASK_WAITING");
-			break;
-		case TASK_TERMINATED:
-			strcpy(state, "TASK_TERMINATED");
-			break;
-		default:
-			throw_unexpected("state not found\n");
-
-		}
-		printf("%d %s %-17s %d %d\n", tmp->pid, tmp->task_name, state,
-		       tmp->total_waiting, tmp->sleep_time);
-		tmp = tmp->prev;
-	}
-	my_puts("");
+//	my_puts("print all inverse:");
+//	tmp = LIST_HEAD.prev;
+//	printf("pid task name state queueing time sleep\n");
+//	while(tmp != &LIST_HEAD) {
+//		char state[20];
+//		switch(tmp->state) {
+//		case TASK_RUNNING:
+//			strcpy(state, "TASK_RUNNING");
+//			break;
+//		case TASK_READY:
+//			strcpy(state, "TASK_READY");
+//			break;
+//		case TASK_WAITING:
+//			strcpy(state, "TASK_WAITING");
+//			break;
+//		case TASK_TERMINATED:
+//			strcpy(state, "TASK_TERMINATED");
+//			break;
+//		default:
+//			throw_unexpected("state not found\n");
+//
+//		}
+//		printf("%d %s %-17s %d %d\n", tmp->pid, tmp->task_name, state,
+//		       tmp->total_waiting, tmp->sleep_time);
+//		tmp = tmp->prev;
+//	}
+//	my_puts("");
 	print_ready_queue();
 	my_puts("");
 
-	print_ready_queue_inverse();
+//	print_ready_queue_inverse();
 }
 
 void hw_suspend(int msec_10)

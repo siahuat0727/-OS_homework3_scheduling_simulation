@@ -13,6 +13,15 @@
 #include <signal.h>
 #include "task.h"
 
+#define my_printf(format, arg) do{\
+									printf(format, arg);\
+									fflush(stdout);\
+								}while(0)
+#define my_puts(str) 	do{\
+							puts(str);\
+							fflush(stdout);\
+						}while(0)
+
 enum TASK_STATE {
 	TASK_RUNNING,
 	TASK_READY,
