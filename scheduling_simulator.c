@@ -1,7 +1,7 @@
 #include "scheduling_simulator.h"
 #define STACK_SIZE 16384
 #define DEMO
-#define DEBUG // =.=
+//#define DEBUG
 #define for_each_node(head, iter, nxt) for(iter = (head)->nxt; iter != head; iter = (iter)->nxt)
 #define my_printf(format, arg) do{\
 									printf(format, arg);\
@@ -12,19 +12,18 @@
 							fflush(stdout);\
 						}while(0)
 
-
 int main()
 {
-	signal_init();
 	list_init();
 	tasks_init();
 
 	shell_mode();
 
+	signal_work(true);
 	assert(getcontext(&TERMINATE) != -1);
 	terminate(); //set to TERMINATE when any task return
 
-	assert(getcontext(&SIMULATOR) != -1);
+	assert(getcontext(&SCHEDULER) != -1);
 	simulating();
 
 	my_puts("main terminate");
@@ -33,7 +32,7 @@ int main()
 
 void terminate()
 {
-	set_timer(0);
+	assert(set_timer(0) == 0);
 	if(RUNNING_TASK) {
 #ifdef DEMO
 		my_printf("pid %d terminate\n", RUNNING_TASK->pid);
@@ -82,10 +81,13 @@ void update_all_sleeping(int msec)
 	}
 }
 
-void signal_init()
+void signal_work(bool work)
 {
 	struct sigaction stp;
-	stp.sa_handler = &signal_handler;
+	if(work)
+		stp.sa_handler = &signal_handler;
+	else
+		stp.sa_handler = &signal_ignore;
 	sigemptyset(&stp.sa_mask);
 	sigaddset(&stp.sa_mask, SIGALRM);
 	sigaddset(&stp.sa_mask, SIGTSTP);
@@ -186,6 +188,7 @@ void shell_mode()
 			}
 
 		} else if(!strcmp(command, "remove")) {
+			// TODO : detect remove 2bla
 
 			// get pid
 			char pid_str[20];
@@ -253,9 +256,6 @@ void print_ready_queue()
 void simulating()
 {
 	while(1) {
-#ifdef DEBUG
-		my_puts("in simulating");
-#endif
 
 		// if anyone running, set to ready + add waiting queue
 		if(RUNNING_TASK != NULL) {
@@ -269,26 +269,20 @@ void simulating()
 
 		if(any_ready_task()) {
 			struct node_t *first_ready = READY_HEAD.next_ready;
-#ifdef DEMO
-			my_printf("found first ready pid=%d\n", first_ready->pid);
-#endif
+
 			// count down
-			if(set_timer(first_ready->quantum_time)) {
-				my_puts("set timer failed");
-				exit(1);
-			}
+			assert(set_timer(first_ready->quantum_time) == 0);
 
 			// never return if success
 			assert(set_to_running(first_ready) != -1);
-			perror("setcontext failed");
-			exit(1);
 
 		} else if(any_waiting_task()) {
+			const int sleep_msec = 10;
+			usleep(1000 * sleep_msec);
 			struct node_t* iter;
-			usleep(10000);
 			for_each_node(&LIST_HEAD, iter, next) {
 				if(iter->state == TASK_WAITING) {
-					if((iter->sleep_time-=10) <= 0) {
+					if((iter->sleep_time-=sleep_msec) <= 0) {
 						; // TODO hmm...
 						hw_wakeup_ptr(iter);
 					}
@@ -296,7 +290,7 @@ void simulating()
 				}
 
 			}
-			setcontext(&SIMULATOR);
+			//		assert(setcontext(&SCHEDULER) != -1);
 		} else {
 			shell_mode();
 		}
@@ -323,7 +317,7 @@ void signal_handler(int sig)
 #ifdef DEBUG
 		my_puts("swap to simulator");
 #endif
-		assert(swapcontext(&(RUNNING_TASK->context), &SIMULATOR) != -1);
+		assert(swapcontext(&(RUNNING_TASK->context), &SCHEDULER) != -1);
 
 	} else if(sig == SIGTSTP) {
 		set_timer(0);
@@ -332,14 +326,17 @@ void signal_handler(int sig)
 		if(tmp)
 			enqueue_ready(tmp);
 
-		// TODO if someone running, pull back to ready
 		shell_mode();
-		if(tmp)
-			assert(swapcontext(&(tmp->context), &SIMULATOR) != -1);
+		if(tmp) // save current task and goto scheduler
+			assert(swapcontext(&(tmp->context), &SCHEDULER) != -1);
 
 	} else {
 		throw_unexpected("unexpected signal");
 	}
+}
+
+void signal_ignore(int sig)
+{
 }
 
 unsigned int get_time()
@@ -354,7 +351,7 @@ int set_to_running(struct node_t* task)
 	// calculate waiting time
 	dequeue_ready(task);
 #ifdef DEMO
-	my_printf("set pid %d to run\n", task->pid);
+	my_printf("pid %d set to run\n", task->pid);
 #endif
 	// set to running
 	task->state = TASK_RUNNING;
@@ -447,13 +444,14 @@ void hw_suspend(int msec_10)
 	RUNNING_TASK->sleep_time = msec_10 * 10;
 	struct node_t* tmp = RUNNING_TASK;
 	RUNNING_TASK = NULL;
-	assert(swapcontext(&(tmp->context), &SIMULATOR) != -1);
+	assert(swapcontext(&(tmp->context), &SCHEDULER) != -1);
 	return;
 }
 
 void hw_wakeup_ptr(struct node_t* node)
 {
-	enqueue_ready(node);
+	if(node->state == TASK_WAITING)
+		enqueue_ready(node);
 }
 
 void hw_wakeup_pid(int pid)
@@ -468,9 +466,10 @@ void hw_wakeup_pid(int pid)
 int hw_wakeup_taskname(char *task_name)
 {
 	struct node_t* iter;
-	for_each_node(&LIST_HEAD, iter, next)
-	if(!strcmp(iter->task_name, task_name))
-		enqueue_ready(iter);
+	for_each_node(&LIST_HEAD, iter, next) {
+		if(!strcmp(iter->task_name, task_name) && iter->state == TASK_WAITING)
+			enqueue_ready(iter);
+	}
 	return 0; // ?
 }
 
@@ -513,11 +512,13 @@ int enqueue(char* task_name, int quantum_time)
 	makecontext(&(node->context), TASKS[task_num_c - '1'], 0);
 
 	// push back to LIST
+	signal_work(false);
 	struct node_t *list_prev = LIST_HEAD.prev;
 	LIST_HEAD.prev = node;
 	list_prev->next = node;
 	node->next = &LIST_HEAD;
 	node->prev = list_prev;
+	signal_work(true);
 
 	// insert into ready queue
 	enqueue_ready(node);
@@ -574,14 +575,10 @@ int remove_task(int pid)
 	while(iter != &LIST_HEAD) {
 		if(iter->pid == pid) {
 			iter->next->prev = iter->prev;
-			my_puts("1");
 			iter->prev->next = iter->next;
-			my_puts("2");
 			if(iter->state == TASK_READY) {
 				iter->next_ready->prev_ready = iter->prev_ready;
-				my_puts("3");
 				iter->prev_ready->next_ready = iter->next_ready;
-				my_puts("4");
 			}
 			free(iter->context.uc_stack.ss_sp);
 			free(iter);

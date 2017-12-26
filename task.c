@@ -6,6 +6,7 @@ void task1(void)   // may terminated
 #ifdef DEBUG
 	puts("I'm task1");
 #endif
+
 	unsigned int a = ~0;
 
 	while (a != 0) {
@@ -18,6 +19,7 @@ void task2(void) // run infinite
 #ifdef DEBUG
 	puts("I'm task2");
 #endif
+
 	unsigned int a = 0;
 
 	while (1) {
@@ -28,9 +30,14 @@ void task2(void) // run infinite
 void task3(void) // wait infinite
 {
 #ifdef DEBUG
-	puts("I'm task3");
+	printf("pid %d I'm task3\n", RUNNING_TASK->pid);
 #endif
+
 	hw_suspend(32768);
+#ifdef DEBUG
+	fprintf(stdout, "pid %d ", RUNNING_TASK->pid);
+#endif
+
 	fprintf(stdout, "task3: good morning~\n");
 	fflush(stdout);
 }
@@ -40,6 +47,7 @@ void task4(void) // sleep 5s
 #ifdef DEBUG
 	puts("I'm task4");
 #endif
+
 	hw_suspend(500);
 	fprintf(stdout, "task4: good morning~\n");
 	fflush(stdout);
@@ -50,6 +58,7 @@ void task5(void)
 #ifdef DEBUG
 	puts("I'm task5");
 #endif
+
 	int pid = hw_task_create("task3");
 
 	hw_suspend(1000);

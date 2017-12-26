@@ -1,5 +1,5 @@
-#ifndef SCHEDULING_SIMULATOR_H
-#define SCHEDULING_SIMULATOR_H
+#ifndef SCHEDULING_SCHEDULER_H
+#define SCHEDULING_SCHEDULER_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -77,9 +77,10 @@ struct node_t* dequeue_ready();
 
 void shell_mode();
 void signal_handler(int sig);
+void signal_ignore(int sig);
 
 // init
-void signal_init();
+void signal_work(bool work);
 void tasks_init();
 void list_init();
 
@@ -91,7 +92,7 @@ void print_ready_queue();
 void throw_unexpected(const char *err_msg);
 void invalid(const char* err_input, const char* type);
 
-ucontext_t SIMULATOR;
+ucontext_t SCHEDULER;
 ucontext_t TERMINATE;
 struct node_t* RUNNING_TASK;
 
