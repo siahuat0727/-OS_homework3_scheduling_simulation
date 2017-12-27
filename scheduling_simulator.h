@@ -40,7 +40,7 @@ struct node_t {
 
 	// unit = ms
 	unsigned int total_waiting;
-	unsigned int start_waiting;
+	unsigned long long int start_waiting;
 	unsigned int sleep_time;
 
 	// pointers
@@ -80,7 +80,7 @@ void update_all_sleeping();
 
 // about timer
 int set_timer(int msec);
-unsigned int get_time();
+unsigned long long int get_time();
 
 int swap_to_running(struct node_t* task);
 bool any_ready_task();

@@ -1,6 +1,6 @@
 #include "scheduling_simulator.h"
 #define STACK_SIZE 8192
-//#define DEMO
+#define DEMO
 //#define DEBUG
 #define for_each_node(head, iter, nxt) for(struct node_t* iter = (head)->nxt; iter != head; iter = (iter)->nxt)
 #define push_back(head, node, pre, nxt) do{											\
@@ -227,7 +227,7 @@ void terminate_main()
 
 void update_total_waiting(struct node_t* node)
 {
-	node->total_waiting += get_time() - node->start_waiting;
+	node->total_waiting += (unsigned int)(get_time() - node->start_waiting);
 }
 
 void update_all_total_waiting()
@@ -290,9 +290,10 @@ int set_timer(int msec)
 void signal_handler(int sig)
 {
 	if(sig == SIGALRM) {
+		assert(RUNNING_TASK != NULL);
 		assert(swapcontext(&(RUNNING_TASK->context), &SCHEDULER) != -1);
 	} else if(sig == SIGTSTP) {
-		set_timer(0);
+		assert(set_timer(0) == 0);
 		if(RUNNING_TASK)
 			enqueue_ready(RUNNING_TASK);
 		RUNNING_TASK = NULL;
@@ -302,17 +303,17 @@ void signal_handler(int sig)
 	}
 }
 
-unsigned int get_time()
+unsigned long long int get_time()
 {
 	struct timeval tv;
-	gettimeofday(&tv, NULL);
-	return tv.tv_sec*1000 + tv.tv_usec/1000;
+	assert(gettimeofday(&tv, NULL) == 0);
+	return tv.tv_sec*1000ULL + tv.tv_usec/1000;
 }
 
 int swap_to_running(struct node_t* task)
 {
 #ifdef DEMO
-	my_printf("pid %d set to run\n", task->pid);
+	//my_printf("pid %d set to run\n", task->pid);
 #endif
 	// set to running
 	task->state = TASK_RUNNING;
@@ -358,7 +359,7 @@ void print_all()
 		default:
 			throw_unexpected("state not found\n");
 		}
-		printf("%d %s %-17s %d %d\n", iter->pid, iter->task_name, state,
+		printf("%d\t%s\t%-17s %d\t%d\n", iter->pid, iter->task_name, state,
 		       iter->total_waiting, iter->sleep_time);
 	}
 	print_ready_queue();
@@ -366,7 +367,8 @@ void print_all()
 
 void hw_suspend(int msec_10)
 {
-	set_timer(0);
+	assert(set_timer(0) == 0);
+	assert(RUNNING_TASK != NULL);
 	RUNNING_TASK->state = TASK_WAITING;
 	RUNNING_TASK->sleep_time = msec_10 * 10;
 	struct node_t* tmp = RUNNING_TASK;
@@ -448,12 +450,10 @@ int enqueue(char* task_name, int quantum_time)
 
 void enqueue_ready(struct node_t *node)
 {
+	assert(node != NULL);
 	node->state = TASK_READY;
 	// save timestamp
-	if(node)
-		node->start_waiting = get_time();
-	else
-		throw_unexpected("added NULL to ready queue");
+	node->start_waiting = get_time();
 
 	// push back into ready queue
 	push_back(&READY_HEAD, node, prev_ready, next_ready);
@@ -462,16 +462,15 @@ void enqueue_ready(struct node_t *node)
 struct node_t* dequeue_ready()
 {
 	struct node_t* tmp = READY_HEAD.next_ready;
-	if(tmp != &READY_HEAD) {
-		update_total_waiting(tmp);
+	assert(tmp != &READY_HEAD);
 
-		tmp->prev_ready->next_ready = tmp->next_ready;
-		tmp->next_ready->prev_ready = tmp->prev_ready;
-		tmp->prev_ready = NULL;
-		tmp->next_ready = NULL;
-	} else { // never happened if run correctly
-		my_puts("ready queue empty");
-	}
+	update_total_waiting(tmp);
+	assert(tmp->next_ready != NULL);
+	assert(tmp->prev_ready != NULL);
+	tmp->prev_ready->next_ready = tmp->next_ready;
+	tmp->next_ready->prev_ready = tmp->prev_ready;
+	tmp->prev_ready = NULL;
+	tmp->next_ready = NULL;
 	return tmp;
 }
 
