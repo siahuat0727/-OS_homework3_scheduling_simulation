@@ -34,8 +34,6 @@ int main()
 	TERMINATE.uc_link = &MAIN;
 	makecontext(&TERMINATE, terminate_main, 0);
 
-	getcontext(&MAIN);
-
 	list_init();
 	tasks_init();
 	signal_init();
@@ -99,7 +97,7 @@ void shell_main()
 			}
 
 			// default quantum time
-			int quantum_time = 500;
+			int quantum_time = 10;
 
 			// try to get option (if any)
 			char option[20];
@@ -192,15 +190,15 @@ void scheduler_main()
 
 		// if anyone running, set to ready + add waiting queue
 		if(RUNNING_TASK != NULL) {
-			update_all_sleeping(RUNNING_TASK->quantum_time);
-			enqueue_ready(RUNNING_TASK);
+			struct node_t* tmp = RUNNING_TASK;
 			RUNNING_TASK = NULL;
+			enqueue_ready(tmp);
+			update_all_sleeping(tmp->quantum_time);
 		}
 		if(any_ready_task()) {
-			struct node_t *first_ready = READY_HEAD.next_ready;
-			// count down
+			struct node_t *first_ready = dequeue_ready();
+			// count down and swap
 			assert(set_timer(first_ready->quantum_time) == 0);
-			// never return if success
 			assert(swap_to_running(first_ready) != -1);
 		} else if(any_waiting_task()) {
 			const int sleep_msec = 1;
@@ -215,8 +213,8 @@ void scheduler_main()
 void terminate_main()
 {
 	while(1) {
-		CUR_UCONTEXT = &TERMINATE;
 		assert(set_timer(0) == 0);
+		CUR_UCONTEXT = &TERMINATE;
 		assert(RUNNING_TASK != NULL);
 #ifdef DEMO
 		my_printf("pid %d terminate\n", RUNNING_TASK->pid);
@@ -266,23 +264,22 @@ bool my_sscanf(char** buf, char* dest)
 	if(sscanf(*buf, "%s", dest) < 0)
 		return false;
 	*buf += strlen(dest);
-	while(**buf == ' ')
+	while(**buf == ' ') // hmm... no need consume
 		++*buf;
 	return true;
 }
 
 void print_ready_queue()
 {
-#ifdef DEBUG
 	my_puts("print ready queue:");
-#endif
-	for_each_node(&READY_HEAD, iter, next_ready)
-	printf("%d %s %d\n", iter->pid, iter->task_name, iter->total_waiting);
+	for_each_node(&READY_HEAD, iter, next_ready) {
+		printf("%d %s %d\n", iter->pid, iter->task_name, iter->total_waiting);
+	}
 }
 
 int set_timer(int msec)
 {
-	struct itimerval count_down;
+	static struct itimerval count_down;
 	count_down.it_value.tv_sec = 0;
 	count_down.it_value.tv_usec = msec * 1000;
 	count_down.it_interval.tv_sec = 0;
@@ -296,7 +293,6 @@ void signal_handler(int sig)
 		assert(swapcontext(&(RUNNING_TASK->context), &SCHEDULER) != -1);
 	} else if(sig == SIGTSTP) {
 		set_timer(0);
-		update_all_total_waiting();
 		if(RUNNING_TASK)
 			enqueue_ready(RUNNING_TASK);
 		RUNNING_TASK = NULL;
@@ -315,8 +311,6 @@ unsigned int get_time()
 
 int swap_to_running(struct node_t* task)
 {
-	// calculate waiting time
-	dequeue_ready(task);
 #ifdef DEMO
 	my_printf("pid %d set to run\n", task->pid);
 #endif
@@ -367,6 +361,7 @@ void print_all()
 		printf("%d %s %-17s %d %d\n", iter->pid, iter->task_name, state,
 		       iter->total_waiting, iter->sleep_time);
 	}
+	print_ready_queue();
 }
 
 void hw_suspend(int msec_10)
@@ -468,13 +463,12 @@ struct node_t* dequeue_ready()
 {
 	struct node_t* tmp = READY_HEAD.next_ready;
 	if(tmp != &READY_HEAD) {
-		// add waiting time
 		update_total_waiting(tmp);
+
 		tmp->prev_ready->next_ready = tmp->next_ready;
 		tmp->next_ready->prev_ready = tmp->prev_ready;
 		tmp->prev_ready = NULL;
 		tmp->next_ready = NULL;
-
 	} else { // never happened if run correctly
 		my_puts("ready queue empty");
 	}
