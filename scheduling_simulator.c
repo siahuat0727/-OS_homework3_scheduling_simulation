@@ -292,7 +292,7 @@ int set_timer(int msec)
 void signal_handler(int sig)
 {
 	if(sig == SIGALRM) {
-		if(RUNNING_TASK == NULL){
+		if(RUNNING_TASK == NULL) {
 			puts("nobody running when sigalrm =.=");
 			assert(setcontext(&SHELL) != -1);
 		}
