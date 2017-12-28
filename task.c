@@ -1,9 +1,9 @@
 #include "task.h"
-#define DEBUG
+//#define DEMO
 
 void task1(void)   // may terminated
 {
-#ifdef DEBUG
+#ifdef DEMO
 	my_puts("I'm task1");
 #endif
 
@@ -16,7 +16,7 @@ void task1(void)   // may terminated
 
 void task2(void) // run infinite
 {
-#ifdef DEBUG
+#ifdef DEMO
 	my_puts("I'm task2");
 #endif
 
@@ -29,12 +29,12 @@ void task2(void) // run infinite
 
 void task3(void) // wait infinite
 {
-#ifdef DEBUG
+#ifdef DEMO
 	my_printf("pid %d I'm task3\n", RUNNING_TASK->pid);
 #endif
 
 	hw_suspend(32768);
-#ifdef DEBUG
+#ifdef DEMO
 	fprintf(stdout, "pid %d ", RUNNING_TASK->pid);
 #endif
 
@@ -44,7 +44,7 @@ void task3(void) // wait infinite
 
 void task4(void) // sleep 5s
 {
-#ifdef DEBUG
+#ifdef DEMO
 	my_puts("I'm task4");
 #endif
 
@@ -55,7 +55,7 @@ void task4(void) // sleep 5s
 
 void task5(void)
 {
-#ifdef DEBUG
+#ifdef DEMO
 	my_puts("I'm task5");
 #endif
 
@@ -72,7 +72,7 @@ void task5(void)
 
 void task6(void)
 {
-#ifdef DEBUG
+#ifdef DEMO
 	my_puts("I'm task6");
 #endif
 	for (int num = 0; num < 5; ++num) {

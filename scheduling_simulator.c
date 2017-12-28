@@ -1,7 +1,6 @@
 #include "scheduling_simulator.h"
 #define STACK_SIZE 8192
 #define DEMO
-//#define DEBUG
 #define for_each_node(head, iter, nxt) for(struct node_t* iter = (head)->nxt; iter != head; iter = (iter)->nxt)
 #define push_back(head, node, pre, nxt) do{											\
 											struct node_t* list_prev = (head)->pre;	\
@@ -197,9 +196,12 @@ void scheduler_main()
 		}
 		if(any_ready_task()) {
 			struct node_t *first_ready = dequeue_ready();
+			first_ready->state = TASK_RUNNING;
+			RUNNING_TASK = first_ready;
+			CUR_UCONTEXT = &(RUNNING_TASK->context);
 			// count down and swap
 			assert(set_timer(first_ready->quantum_time) == 0);
-			assert(swap_to_running(first_ready) != -1);
+			assert(swapcontext(&SCHEDULER, &(first_ready->context)) != -1);
 		} else if(any_waiting_task()) {
 			const int sleep_msec = 1;
 			usleep(1000 * sleep_msec);
@@ -290,7 +292,10 @@ int set_timer(int msec)
 void signal_handler(int sig)
 {
 	if(sig == SIGALRM) {
-		assert(RUNNING_TASK != NULL);
+		if(RUNNING_TASK == NULL){
+			puts("nobody running when sigalrm =.=");
+			assert(setcontext(&SHELL) != -1);
+		}
 		assert(swapcontext(&(RUNNING_TASK->context), &SCHEDULER) != -1);
 	} else if(sig == SIGTSTP) {
 		assert(set_timer(0) == 0);
@@ -310,18 +315,6 @@ unsigned long long int get_time()
 	return tv.tv_sec*1000ULL + tv.tv_usec/1000;
 }
 
-int swap_to_running(struct node_t* task)
-{
-#ifdef DEMO
-	//my_printf("pid %d set to run\n", task->pid);
-#endif
-	// set to running
-	task->state = TASK_RUNNING;
-	RUNNING_TASK = task;
-	CUR_UCONTEXT = &(RUNNING_TASK->context);
-	return swapcontext(&SCHEDULER, &(task->context));
-}
-
 bool any_ready_task()
 {
 	return READY_HEAD.next_ready != &READY_HEAD;
@@ -339,8 +332,6 @@ bool any_waiting_task()
 void print_all()
 {
 	my_puts("");
-	my_puts("print all:");
-	printf("pid task name state queueing time sleep\n");
 	for_each_node(&LIST_HEAD, iter, next) {
 		char state[20];
 		switch(iter->state) {
@@ -362,17 +353,19 @@ void print_all()
 		printf("%d\t%s\t%-17s %d\t%d\n", iter->pid, iter->task_name, state,
 		       iter->total_waiting, iter->sleep_time);
 	}
+#ifdef DEMO
 	print_ready_queue();
+#endif
 }
 
 void hw_suspend(int msec_10)
 {
 	assert(set_timer(0) == 0);
 	assert(RUNNING_TASK != NULL);
-	RUNNING_TASK->state = TASK_WAITING;
-	RUNNING_TASK->sleep_time = msec_10 * 10;
 	struct node_t* tmp = RUNNING_TASK;
 	RUNNING_TASK = NULL;
+	tmp->sleep_time = msec_10 * 10;
+	tmp->state = TASK_WAITING;
 	assert(swapcontext(&(tmp->context), &SCHEDULER) != -1);
 	return;
 }
