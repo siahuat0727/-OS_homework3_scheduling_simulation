@@ -1,6 +1,6 @@
 #include "scheduling_simulator.h"
 #define STACK_SIZE 8192
-#define DEMO
+//#define DEMO
 #define for_each_node(head, iter, nxt) for(struct node_t* iter = (head)->nxt; iter != head; iter = (iter)->nxt)
 #define push_back(head, node, pre, nxt) do{											\
 											struct node_t* list_prev = (head)->pre;	\
@@ -332,6 +332,7 @@ bool any_waiting_task()
 void print_all()
 {
 	my_puts("");
+	printf("pid\ttask name\tstate\t\t\tqueuing time\tsleeping time\n");
 	for_each_node(&LIST_HEAD, iter, next) {
 		char state[20];
 		switch(iter->state) {
@@ -350,7 +351,7 @@ void print_all()
 		default:
 			throw_unexpected("state not found\n");
 		}
-		printf("%d\t%s\t%-17s %d\t%d\n", iter->pid, iter->task_name, state,
+		printf("%d\t%s\t\t%-17s\t%d\t\t%d\n", iter->pid, iter->task_name, state,
 		       iter->total_waiting, iter->sleep_time);
 	}
 #ifdef DEMO
